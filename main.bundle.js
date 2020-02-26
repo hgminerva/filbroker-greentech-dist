@@ -374,8 +374,8 @@ var AccountService = (function () {
     }
     AccountService.prototype.login = function (username, password) {
         var _this = this;
-        // let url = 'http://filbrokerwebsite-greentech-api.azurewebsites.net/token';
-        var url = 'http://filbrokerwebsite-greentech-api.azurewebsites.net/token';
+        // let url = 'https://filbrokerwebsite-greentech-api.azurewebsites.net/token';
+        var url = 'https://filbrokerwebsite-greentech-api.azurewebsites.net/token';
         var body = "username=" + username + "&password=" + password + "&grant_type=password";
         var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Headers */]({ 'Content-Type': 'application/x-www-form-urlencoded' });
         var options = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["d" /* RequestOptions */]({ headers: headers });
@@ -391,8 +391,8 @@ var AccountService = (function () {
         });
     };
     AccountService.prototype.getUserRights = function (username) {
-        // let url = 'http://filbrokerwebsite-greentech-api.azurewebsites.net/api/MstUserRight/ListPerUserByUsername/' + username;
-        var url = 'http://filbrokerwebsite-greentech-api.azurewebsites.net/api/MstUserRight/ListPerUserByUsername/' + username;
+        // let url = 'https://filbrokerwebsite-greentech-api.azurewebsites.net/api/MstUserRight/ListPerUserByUsername/' + username;
+        var url = 'https://filbrokerwebsite-greentech-api.azurewebsites.net/api/MstUserRight/ListPerUserByUsername/' + username;
         var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Headers */]({
             'Authorization': 'Bearer ' + localStorage.getItem('access_token'),
             'Content-Type': 'application/json'
@@ -438,8 +438,8 @@ var AccountService = (function () {
         var usernameErrorMessageArray = new __WEBPACK_IMPORTED_MODULE_5_wijmo_wijmo__["ObservableArray"]();
         var passwordErrorMessageArray = new __WEBPACK_IMPORTED_MODULE_5_wijmo_wijmo__["ObservableArray"]();
         var confirmPasswordErrorMessageArray = new __WEBPACK_IMPORTED_MODULE_5_wijmo_wijmo__["ObservableArray"]();
-        // let url = "http://filbrokerwebsite-greentech-api.azurewebsites.net/api/account/register";
-        var url = "http://filbrokerwebsite-greentech-api.azurewebsites.net/api/account/register";
+        // let url = "https://filbrokerwebsite-greentech-api.azurewebsites.net/api/account/register";
+        var url = "https://filbrokerwebsite-greentech-api.azurewebsites.net/api/account/register";
         this.http.post(url, JSON.stringify(regObj), this.options).subscribe(function (response) {
             if (response != null) {
                 successMessageArray.push({
@@ -1607,7 +1607,7 @@ var BrokerService = (function () {
     // list
     BrokerService.prototype.getBrokers = function () {
         var _this = this;
-        var url = "http://filbrokerwebsite-greentech-api.azurewebsites.net/api/MstBroker/List";
+        var url = "https://filbrokerwebsite-greentech-api.azurewebsites.net/api/MstBroker/List";
         var brokers = new __WEBPACK_IMPORTED_MODULE_4_wijmo_wijmo__["ObservableArray"]();
         this.http.get(url, this.options).subscribe(function (response) {
             var results = new __WEBPACK_IMPORTED_MODULE_4_wijmo_wijmo__["ObservableArray"](response.json());
@@ -1667,7 +1667,7 @@ var BrokerService = (function () {
     BrokerService.prototype.getBroker = function (id) {
         var _this = this;
         var broker;
-        var url = "http://filbrokerwebsite-greentech-api.azurewebsites.net/api/MstBroker/Detail/" + id;
+        var url = "https://filbrokerwebsite-greentech-api.azurewebsites.net/api/MstBroker/Detail/" + id;
         this.http.get(url, this.options).subscribe(function (response) {
             var results = response.json();
             if (results != null) {
@@ -1726,7 +1726,7 @@ var BrokerService = (function () {
     BrokerService.prototype.getDropDowns = function () {
         var _this = this;
         var dropDowns = new __WEBPACK_IMPORTED_MODULE_4_wijmo_wijmo__["ObservableArray"]();
-        var url = "http://filbrokerwebsite-greentech-api.azurewebsites.net/api/SysDropDown/List";
+        var url = "https://filbrokerwebsite-greentech-api.azurewebsites.net/api/SysDropDown/List";
         this.http.get(url, this.options).subscribe(function (response) {
             var results = new __WEBPACK_IMPORTED_MODULE_4_wijmo_wijmo__["ObservableArray"](response.json());
             if (results.length > 0) {
@@ -1749,7 +1749,7 @@ var BrokerService = (function () {
     // list operations 
     BrokerService.prototype.addBroker = function (broker) {
         var _this = this;
-        var url = "http://filbrokerwebsite-greentech-api.azurewebsites.net/api/MstBroker/Add";
+        var url = "https://filbrokerwebsite-greentech-api.azurewebsites.net/api/MstBroker/Add";
         this.http.post(url, JSON.stringify(broker), this.options).subscribe(function (response) {
             var id = response.json();
             console.log(id);
@@ -1768,7 +1768,7 @@ var BrokerService = (function () {
     };
     BrokerService.prototype.deleteBroker = function (id) {
         var _this = this;
-        var url = "http://filbrokerwebsite-greentech-api.azurewebsites.net/api/MstBroker/Delete/" + id;
+        var url = "https://filbrokerwebsite-greentech-api.azurewebsites.net/api/MstBroker/Delete/" + id;
         this.http.delete(url, this.options).subscribe(function (response) {
             _this.brokerDeletedSource.next(1);
         }, function (error) {
@@ -1777,7 +1777,7 @@ var BrokerService = (function () {
     };
     BrokerService.prototype.uploadBrokerPicture = function (file, fileName) {
         var _this = this;
-        var url = "http://filbrokerwebsite-greentech-api.azurewebsites.net/api/Blob/Upload";
+        var url = "https://filbrokerwebsite-greentech-api.azurewebsites.net/api/Blob/Upload";
         var blob;
         var formData = new FormData();
         formData.append("image", file, fileName);
@@ -1807,7 +1807,7 @@ var BrokerService = (function () {
     // detail operations
     BrokerService.prototype.saveBroker = function (broker) {
         var _this = this;
-        var url = "http://filbrokerwebsite-greentech-api.azurewebsites.net/api/MstBroker/Save";
+        var url = "https://filbrokerwebsite-greentech-api.azurewebsites.net/api/MstBroker/Save";
         this.http.put(url, JSON.stringify(broker), this.options).subscribe(function (response) {
             _this.brokerSavedSource.next(1);
         }, function (error) {
@@ -1816,7 +1816,7 @@ var BrokerService = (function () {
     };
     BrokerService.prototype.lockBroker = function (broker) {
         var _this = this;
-        var url = "http://filbrokerwebsite-greentech-api.azurewebsites.net/api/MstBroker/Lock";
+        var url = "https://filbrokerwebsite-greentech-api.azurewebsites.net/api/MstBroker/Lock";
         this.http.put(url, JSON.stringify(broker), this.options).subscribe(function (response) {
             _this.brokerLockedSource.next(1);
         }, function (error) {
@@ -1825,7 +1825,7 @@ var BrokerService = (function () {
     };
     BrokerService.prototype.unlockBroker = function (broker) {
         var _this = this;
-        var url = "http://filbrokerwebsite-greentech-api.azurewebsites.net/api/MstBroker/Unlock";
+        var url = "https://filbrokerwebsite-greentech-api.azurewebsites.net/api/MstBroker/Unlock";
         this.http.put(url, JSON.stringify(broker), this.options).subscribe(function (response) {
             _this.brokerUnlockedSource.next(1);
         }, function (error) {
@@ -2600,7 +2600,7 @@ var ChecklistService = (function () {
     // filters
     ChecklistService.prototype.getProjects = function () {
         var _this = this;
-        var url = "http://filbrokerwebsite-greentech-api.azurewebsites.net/api/MstProject/List";
+        var url = "https://filbrokerwebsite-greentech-api.azurewebsites.net/api/MstProject/List";
         var projects = new __WEBPACK_IMPORTED_MODULE_4_wijmo_wijmo__["ObservableArray"]();
         this.http.get(url, this.options).subscribe(function (response) {
             var results = new __WEBPACK_IMPORTED_MODULE_4_wijmo_wijmo__["ObservableArray"](response.json());
@@ -2629,7 +2629,7 @@ var ChecklistService = (function () {
     // list
     ChecklistService.prototype.getChecklistPerProjectId = function (projectId) {
         var _this = this;
-        var url = "http://filbrokerwebsite-greentech-api.azurewebsites.net/api/MstChecklist/ListPerProjectId/" + projectId;
+        var url = "https://filbrokerwebsite-greentech-api.azurewebsites.net/api/MstChecklist/ListPerProjectId/" + projectId;
         var checklist = new __WEBPACK_IMPORTED_MODULE_4_wijmo_wijmo__["ObservableArray"]();
         this.http.get(url, this.options).subscribe(function (response) {
             var results = new __WEBPACK_IMPORTED_MODULE_4_wijmo_wijmo__["ObservableArray"](response.json());
@@ -2661,7 +2661,7 @@ var ChecklistService = (function () {
     // list operations
     ChecklistService.prototype.addChecklist = function (checklist, btnAddChecklist) {
         var _this = this;
-        var url = "http://filbrokerwebsite-greentech-api.azurewebsites.net/api/MstCheckList/Add";
+        var url = "https://filbrokerwebsite-greentech-api.azurewebsites.net/api/MstCheckList/Add";
         this.http.post(url, JSON.stringify(checklist), this.options).subscribe(function (response) {
             var id = response.json();
             if (id > 0) {
@@ -2683,7 +2683,7 @@ var ChecklistService = (function () {
     };
     ChecklistService.prototype.deleteChecklist = function (id) {
         var _this = this;
-        var url = "http://filbrokerwebsite-greentech-api.azurewebsites.net/api/MstCheckList/Delete/" + id;
+        var url = "https://filbrokerwebsite-greentech-api.azurewebsites.net/api/MstCheckList/Delete/" + id;
         this.http.delete(url, this.options).subscribe(function (response) {
             _this.checklistDeletedSource.next(1);
         }, function (error) {
@@ -2693,7 +2693,7 @@ var ChecklistService = (function () {
     ChecklistService.prototype.getChecklist = function (id) {
         var _this = this;
         var checklist;
-        var url = "http://filbrokerwebsite-greentech-api.azurewebsites.net/api/MstCheckList/Detail/" + id;
+        var url = "https://filbrokerwebsite-greentech-api.azurewebsites.net/api/MstCheckList/Detail/" + id;
         this.http.get(url, this.options).subscribe(function (response) {
             var result = response.json();
             if (result != null) {
@@ -2725,7 +2725,7 @@ var ChecklistService = (function () {
     // detail operations
     ChecklistService.prototype.saveChecklist = function (checklist) {
         var _this = this;
-        var url = "http://filbrokerwebsite-greentech-api.azurewebsites.net/api/MstCheckList/Save";
+        var url = "https://filbrokerwebsite-greentech-api.azurewebsites.net/api/MstCheckList/Save";
         this.http.put(url, JSON.stringify(checklist), this.options).subscribe(function (response) {
             _this.checklistSavedSource.next(1);
         }, function (error) {
@@ -2734,7 +2734,7 @@ var ChecklistService = (function () {
     };
     ChecklistService.prototype.lockChecklist = function (checklist) {
         var _this = this;
-        var url = "http://filbrokerwebsite-greentech-api.azurewebsites.net/api/MstCheckList/Lock";
+        var url = "https://filbrokerwebsite-greentech-api.azurewebsites.net/api/MstCheckList/Lock";
         this.http.put(url, JSON.stringify(checklist), this.options).subscribe(function (response) {
             _this.checklistLockedSource.next(1);
         }, function (error) {
@@ -2743,7 +2743,7 @@ var ChecklistService = (function () {
     };
     ChecklistService.prototype.unlockChecklist = function (checklist) {
         var _this = this;
-        var url = "http://filbrokerwebsite-greentech-api.azurewebsites.net/api/MstCheckList/UnLock";
+        var url = "https://filbrokerwebsite-greentech-api.azurewebsites.net/api/MstCheckList/UnLock";
         this.http.put(url, JSON.stringify(checklist), this.options).subscribe(function (reponse) {
             _this.checklistUnlockedSource.next(1);
         }, function (error) {
@@ -2754,7 +2754,7 @@ var ChecklistService = (function () {
     ChecklistService.prototype.getDropDowns = function () {
         var _this = this;
         var dropDowns = new __WEBPACK_IMPORTED_MODULE_4_wijmo_wijmo__["ObservableArray"]();
-        var url = "http://filbrokerwebsite-greentech-api.azurewebsites.net/api/SysDropDown/List";
+        var url = "https://filbrokerwebsite-greentech-api.azurewebsites.net/api/SysDropDown/List";
         this.http.get(url, this.options).subscribe(function (response) {
             var results = new __WEBPACK_IMPORTED_MODULE_4_wijmo_wijmo__["ObservableArray"](response.json());
             if (results.length > 0) {
@@ -2777,7 +2777,7 @@ var ChecklistService = (function () {
     // detail item1 (requirements) list
     ChecklistService.prototype.getChecklistRequirementsPerChecklist = function (id) {
         var _this = this;
-        var url = "http://filbrokerwebsite-greentech-api.azurewebsites.net/api/MstCheckListRequirement/ListPerChecklist/" + id;
+        var url = "https://filbrokerwebsite-greentech-api.azurewebsites.net/api/MstCheckListRequirement/ListPerChecklist/" + id;
         var checklistRequirements = new __WEBPACK_IMPORTED_MODULE_4_wijmo_wijmo__["ObservableArray"]();
         this.http.get(url, this.options).subscribe(function (response) {
             var results = new __WEBPACK_IMPORTED_MODULE_4_wijmo_wijmo__["ObservableArray"](response.json());
@@ -2806,7 +2806,7 @@ var ChecklistService = (function () {
     ChecklistService.prototype.saveChecklistRequirement = function (checklistRequirement) {
         var _this = this;
         if (checklistRequirement.id == 0) {
-            var url = "http://filbrokerwebsite-greentech-api.azurewebsites.net/api/MstCheckListRequirement/Add";
+            var url = "https://filbrokerwebsite-greentech-api.azurewebsites.net/api/MstCheckListRequirement/Add";
             this.http.post(url, JSON.stringify(checklistRequirement), this.options).subscribe(function (response) {
                 _this.checklistRequirementsSavedSource.next(1);
             }, function (error) {
@@ -2814,7 +2814,7 @@ var ChecklistService = (function () {
             });
         }
         else {
-            var url = "http://filbrokerwebsite-greentech-api.azurewebsites.net/api/MstCheckListRequirement/Save";
+            var url = "https://filbrokerwebsite-greentech-api.azurewebsites.net/api/MstCheckListRequirement/Save";
             this.http.put(url, JSON.stringify(checklistRequirement), this.options).subscribe(function (response) {
                 _this.checklistRequirementsSavedSource.next(1);
             }, function (error) {
@@ -2824,7 +2824,7 @@ var ChecklistService = (function () {
     };
     ChecklistService.prototype.deleteChecklistRequirement = function (id) {
         var _this = this;
-        var url = "http://filbrokerwebsite-greentech-api.azurewebsites.net/api/MstCheckListRequirement/Delete/" + id;
+        var url = "https://filbrokerwebsite-greentech-api.azurewebsites.net/api/MstCheckListRequirement/Delete/" + id;
         this.http.delete(url, this.options).subscribe(function (response) {
             _this.checklistRequirementsDeletedSource.next(1);
         }, function (error) {
@@ -3356,7 +3356,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/collection/collection.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<menu-root></menu-root>\n<!-- bread crumbs -->\n<br>\n<br>\n<div class=\"content-wrapper\">\n  <div class=\"container-fluid\">\n\n    <!-- bread crumbs -->\n    <ol class=\"breadcrumb\">\n      <li class=\"breadcrumb-item\">\n        <a routerLink=\"/menu\">Menu</a>\n      </li>\n      <li class=\"breadcrumb-item active\">{{title}}</li>\n    </ol>\n\n    <div class=\"card\">\n\n      <!-- buttons -->\n      <div class=\"card-header\">\n        <table border=\"0\" style=\"width: 100%;\">\n          <tr>\n            <td style=\"width: 59%;\">\n              <h4>{{title}}</h4>\n            </td>\n            <td style=\"width: 1%;\"></td>\n            <td style=\"width: 40%;\" align=\"right\">\n              <button id=\"btnAddCollection\" class=\"btn btn-primary\" id=\"btnAddCollection\" (click)=\"btnAddCollectionClick()\">\n                <i class=\"fa fa-plus fa-fw\"></i> Add\n              </button>\n              <button id=\"btnCloseCollection\" class=\"btn btn-danger\" routerLink=\"/menu\">\n                <i class=\"fa fa-close fa-fw\"></i> Close\n              </button>\n            </td>\n          </tr>\n        </table>\n      </div>\n\n      <!-- filters -->\n      <div class=\"card-header\">\n        <table border=\"0\" style=\"width: 100%;\">\n          <tr>\n            <td style=\"width: 25%;\">\n              <div class=\"input-group\">\n                <span class=\"input-group-addon\">\n                  Date Start:\n                </span>\n                <wj-input-date #calDateStart [(ngModel)]=\"calDateStartData\" (textChanged)=\"geCollectionList()\"\n                  format=\"M/d/yyyy\">\n                </wj-input-date>\n              </div>\n            </td>\n            <td style=\"width: 1%;\"></td>\n            <td style=\"width: 25%;\">\n              <div class=\"input-group\">\n                <span class=\"input-group-addon\">\n                  Date End:\n                </span>\n                <wj-input-date #calDateEnd [(ngModel)]=\"calDateEndData\" (textChanged)=\"geCollectionList()\"\n                  format=\"M/d/yyyy\">\n                </wj-input-date>\n              </div>\n            </td>\n            <td style=\"width: 49%;\"></td>\n          </tr>\n        </table>\n      </div>\n      <!-- flexgrid -->\n      <div class=\"card-body\">\n        <wj-flex-grid #fgdCollection [itemsSource]=\"fgdCollectionCollectionView\" [selectionMode]=\"3\"\n          [frozenColumns]=\"2\">\n          <wj-flex-grid-filter></wj-flex-grid-filter>\n          <wj-flex-grid-column  [header]=\"Edit\" [isReadOnly]=\"true\" [isContentHtml]=\"true\" [width]=\"90\">\n            <ng-template wjFlexGridCellTemplate [cellType]=\"'Cell'\" let-cell=\"cell\">\n              <button class=\"btn btn-primary btn-xs btn-block\" (click)=\"btnEditCollectionClick()\"\n                id=\"btnEditCollection\">\n                <i class=\"fa fa-edit fa-fw\"></i> Edit\n              </button>\n            </ng-template>\n          </wj-flex-grid-column>\n          <wj-flex-grid-column [header]=\"Delete\" [isReadOnly]=\"true\" [width]=\"90\">\n            <ng-template wjFlexGridCellTemplate [cellType]=\"'Cell'\" let-cell=\"cell\">\n              <button class=\"btn btn-danger btn-xs btn-block\" (click)=\"btnDeleteCollectionClick()\"\n                id=\"btnDeleteCollection\">\n                <i class=\"fa fa-trash fa-fw\"></i> Delete\n              </button>\n            </ng-template>\n          </wj-flex-grid-column>\n          <wj-flex-grid-column *ngIf=\"false\" [header]=\"'Id'\" [binding]=\"'Id'\" [isReadOnly]=\"true\" [width]=\"'*'\">\n          </wj-flex-grid-column>\n          <wj-flex-grid-column [header]=\"'Collect No.'\" [binding]=\"'CollectionNumber'\" [isReadOnly]=\"true\"\n            [width]=\"100\"></wj-flex-grid-column>\n          <wj-flex-grid-column [header]=\"'Date'\" [binding]=\"'CollectionDate'\" [isReadOnly]=\"true\" [width]=\"'*'\">\n          </wj-flex-grid-column>\n          <wj-flex-grid-column [header]=\"'Customer'\" [binding]=\"'Customer'\" [isReadOnly]=\"true\" [width]=\"'*'\">\n          </wj-flex-grid-column>\n          <wj-flex-grid-column [header]=\"'Particulars'\" [binding]=\"'Particulars'\" [isReadOnly]=\"true\" [width]=\"'*'\">\n          </wj-flex-grid-column>\n          <wj-flex-grid-column [header]=\"'L'\" [binding]=\"'IsLocked'\" [isReadOnly]=\"true\" [width]=\"50\">\n          </wj-flex-grid-column>\n        </wj-flex-grid>\n      </div>\n\n      <!-- navigation buttons -->\n      <div class=\"card-footer\">\n        <div class=\"col-sm-12 btn-group\" style=\"padding: 5px 0px 5px 0px;\">\n          <button type=\"button\" class=\"btn btn-secondary\" (click)=\"fgdCollectionCollectionView.moveToFirstPage()\">\n            <i class=\"fa fa-fast-backward\"></i> First\n          </button>\n          <button type=\"button\" class=\"btn btn-secondary\" (click)=\"fgdCollectionCollectionView.moveToPreviousPage()\">\n            <i class=\"fa fa-step-backward\"></i> Previous\n          </button>\n          <button type=\"button\" class=\"btn btn-secondary\" disabled style=\"width:100px\">\n            <!-- {{ fgdCollectionCollectionView.pageIndex + 1 }} / {{ fgdCollectionCollectionView.pageCount }} -->\n          </button>\n          <button type=\"button\" class=\"btn btn-secondary\" (click)=\"fgdCollectionCollectionView.moveToNextPage()\">\n            Next\n            <i class=\"fa fa-step-forward\"></i>\n          </button>\n          <button type=\"button\" class=\"btn btn-secondary\" (click)=\"fgdCollectionCollectionView.moveToLastPage()\">\n            Last\n            <i class=\"fa fa-fast-forward\"></i>\n          </button>\n        </div>\n      </div>\n\n    </div>\n\n  </div>\n\n  <!-- user and time stamp -->\n  <app-footer [data]=\"fgdCollectionCollectionView\"></app-footer>\n</div>\n\n<!-- delete sold unit modal -->\n<div id=\"mdlCollectionDelete\" class=\"modal fade\" role=\"dialog\" [ngStyle]=\"{'display': mdlDeleteCollectionShow ? 'block' : 'none', 'opacity': 1}\">\n  <div class=\"modal-dialog modal-lg\">\n      <div class=\"modal-content\">\n          <div class=\"modal-header\">\n              <h4 class=\"modal-title\">Delete Collection</h4>\n          </div>\n          <div class=\"modal-body\">\n              Delete {{currentCollectionNumber}}?\n          </div>\n          <div class=\"modal-footer\" align=\"right\">\n              <button type=\"button\" id=\"btnOkCollectionDeleteModal\" class=\"btn btn-danger\" (click)=\"btnOkCollectionDeleteModalClick()\">\n                  <i class=\"fa fa-trash fa-fw\"></i> Ok</button>\n              <button type=\"button\" id=\"btnCloseCollectionDeleteModal\" class=\"btn btn-primary\" (click)=\"btnCloseCollectionDeleteModalClick()\">\n                  <i class=\"fa fa-close fa-fw\"></i> Close</button>\n          </div>\n      </div>\n  </div>\n</div>"
+module.exports = "<menu-root></menu-root>\r\n<!-- bread crumbs -->\r\n<br>\r\n<br>\r\n<div class=\"content-wrapper\">\r\n  <div class=\"container-fluid\">\r\n\r\n    <!-- bread crumbs -->\r\n    <ol class=\"breadcrumb\">\r\n      <li class=\"breadcrumb-item\">\r\n        <a routerLink=\"/menu\">Menu</a>\r\n      </li>\r\n      <li class=\"breadcrumb-item active\">{{title}}</li>\r\n    </ol>\r\n\r\n    <div class=\"card\">\r\n\r\n      <!-- buttons -->\r\n      <div class=\"card-header\">\r\n        <table border=\"0\" style=\"width: 100%;\">\r\n          <tr>\r\n            <td style=\"width: 59%;\">\r\n              <h4>{{title}}</h4>\r\n            </td>\r\n            <td style=\"width: 1%;\"></td>\r\n            <td style=\"width: 40%;\" align=\"right\">\r\n              <button id=\"btnAddCollection\" class=\"btn btn-primary\" id=\"btnAddCollection\" (click)=\"btnAddCollectionClick()\">\r\n                <i class=\"fa fa-plus fa-fw\"></i> Add\r\n              </button>\r\n              <button id=\"btnCloseCollection\" class=\"btn btn-danger\" routerLink=\"/menu\">\r\n                <i class=\"fa fa-close fa-fw\"></i> Close\r\n              </button>\r\n            </td>\r\n          </tr>\r\n        </table>\r\n      </div>\r\n\r\n      <!-- filters -->\r\n      <div class=\"card-header\">\r\n        <table border=\"0\" style=\"width: 100%;\">\r\n          <tr>\r\n            <td style=\"width: 25%;\">\r\n              <div class=\"input-group\">\r\n                <span class=\"input-group-addon\">\r\n                  Date Start:\r\n                </span>\r\n                <wj-input-date #calDateStart [(ngModel)]=\"calDateStartData\" (textChanged)=\"geCollectionList()\"\r\n                  format=\"M/d/yyyy\">\r\n                </wj-input-date>\r\n              </div>\r\n            </td>\r\n            <td style=\"width: 1%;\"></td>\r\n            <td style=\"width: 25%;\">\r\n              <div class=\"input-group\">\r\n                <span class=\"input-group-addon\">\r\n                  Date End:\r\n                </span>\r\n                <wj-input-date #calDateEnd [(ngModel)]=\"calDateEndData\" (textChanged)=\"geCollectionList()\"\r\n                  format=\"M/d/yyyy\">\r\n                </wj-input-date>\r\n              </div>\r\n            </td>\r\n            <td style=\"width: 49%;\"></td>\r\n          </tr>\r\n        </table>\r\n      </div>\r\n      <!-- flexgrid -->\r\n      <div class=\"card-body\">\r\n        <wj-flex-grid #fgdCollection [itemsSource]=\"fgdCollectionCollectionView\" [selectionMode]=\"3\"\r\n          [frozenColumns]=\"2\">\r\n          <wj-flex-grid-filter></wj-flex-grid-filter>\r\n          <wj-flex-grid-column  [header]=\"Edit\" [isReadOnly]=\"true\" [isContentHtml]=\"true\" [width]=\"90\">\r\n            <ng-template wjFlexGridCellTemplate [cellType]=\"'Cell'\" let-cell=\"cell\">\r\n              <button class=\"btn btn-primary btn-xs btn-block\" (click)=\"btnEditCollectionClick()\"\r\n                id=\"btnEditCollection\">\r\n                <i class=\"fa fa-edit fa-fw\"></i> Edit\r\n              </button>\r\n            </ng-template>\r\n          </wj-flex-grid-column>\r\n          <wj-flex-grid-column [header]=\"Delete\" [isReadOnly]=\"true\" [width]=\"90\">\r\n            <ng-template wjFlexGridCellTemplate [cellType]=\"'Cell'\" let-cell=\"cell\">\r\n              <button class=\"btn btn-danger btn-xs btn-block\" (click)=\"btnDeleteCollectionClick()\"\r\n                id=\"btnDeleteCollection\">\r\n                <i class=\"fa fa-trash fa-fw\"></i> Delete\r\n              </button>\r\n            </ng-template>\r\n          </wj-flex-grid-column>\r\n          <wj-flex-grid-column *ngIf=\"false\" [header]=\"'Id'\" [binding]=\"'Id'\" [isReadOnly]=\"true\" [width]=\"'*'\">\r\n          </wj-flex-grid-column>\r\n          <wj-flex-grid-column [header]=\"'Collect No.'\" [binding]=\"'CollectionNumber'\" [isReadOnly]=\"true\"\r\n            [width]=\"100\"></wj-flex-grid-column>\r\n          <wj-flex-grid-column [header]=\"'Date'\" [binding]=\"'CollectionDate'\" [isReadOnly]=\"true\" [width]=\"'*'\">\r\n          </wj-flex-grid-column>\r\n          <wj-flex-grid-column [header]=\"'Customer'\" [binding]=\"'Customer'\" [isReadOnly]=\"true\" [width]=\"'*'\">\r\n          </wj-flex-grid-column>\r\n          <wj-flex-grid-column [header]=\"'Particulars'\" [binding]=\"'Particulars'\" [isReadOnly]=\"true\" [width]=\"'*'\">\r\n          </wj-flex-grid-column>\r\n          <wj-flex-grid-column [header]=\"'L'\" [binding]=\"'IsLocked'\" [isReadOnly]=\"true\" [width]=\"50\">\r\n          </wj-flex-grid-column>\r\n        </wj-flex-grid>\r\n      </div>\r\n\r\n      <!-- navigation buttons -->\r\n      <div class=\"card-footer\">\r\n        <div class=\"col-sm-12 btn-group\" style=\"padding: 5px 0px 5px 0px;\">\r\n          <button type=\"button\" class=\"btn btn-secondary\" (click)=\"fgdCollectionCollectionView.moveToFirstPage()\">\r\n            <i class=\"fa fa-fast-backward\"></i> First\r\n          </button>\r\n          <button type=\"button\" class=\"btn btn-secondary\" (click)=\"fgdCollectionCollectionView.moveToPreviousPage()\">\r\n            <i class=\"fa fa-step-backward\"></i> Previous\r\n          </button>\r\n          <button type=\"button\" class=\"btn btn-secondary\" disabled style=\"width:100px\">\r\n            <!-- {{ fgdCollectionCollectionView.pageIndex + 1 }} / {{ fgdCollectionCollectionView.pageCount }} -->\r\n          </button>\r\n          <button type=\"button\" class=\"btn btn-secondary\" (click)=\"fgdCollectionCollectionView.moveToNextPage()\">\r\n            Next\r\n            <i class=\"fa fa-step-forward\"></i>\r\n          </button>\r\n          <button type=\"button\" class=\"btn btn-secondary\" (click)=\"fgdCollectionCollectionView.moveToLastPage()\">\r\n            Last\r\n            <i class=\"fa fa-fast-forward\"></i>\r\n          </button>\r\n        </div>\r\n      </div>\r\n\r\n    </div>\r\n\r\n  </div>\r\n\r\n  <!-- user and time stamp -->\r\n  <app-footer [data]=\"fgdCollectionCollectionView\"></app-footer>\r\n</div>\r\n\r\n<!-- delete sold unit modal -->\r\n<div id=\"mdlCollectionDelete\" class=\"modal fade\" role=\"dialog\" [ngStyle]=\"{'display': mdlDeleteCollectionShow ? 'block' : 'none', 'opacity': 1}\">\r\n  <div class=\"modal-dialog modal-lg\">\r\n      <div class=\"modal-content\">\r\n          <div class=\"modal-header\">\r\n              <h4 class=\"modal-title\">Delete Collection</h4>\r\n          </div>\r\n          <div class=\"modal-body\">\r\n              Delete {{currentCollectionNumber}}?\r\n          </div>\r\n          <div class=\"modal-footer\" align=\"right\">\r\n              <button type=\"button\" id=\"btnOkCollectionDeleteModal\" class=\"btn btn-danger\" (click)=\"btnOkCollectionDeleteModalClick()\">\r\n                  <i class=\"fa fa-trash fa-fw\"></i> Ok</button>\r\n              <button type=\"button\" id=\"btnCloseCollectionDeleteModal\" class=\"btn btn-primary\" (click)=\"btnCloseCollectionDeleteModalClick()\">\r\n                  <i class=\"fa fa-close fa-fw\"></i> Close</button>\r\n          </div>\r\n      </div>\r\n  </div>\r\n</div>"
 
 /***/ }),
 
@@ -3563,7 +3563,7 @@ var CollectionService = (function () {
     CollectionService.prototype.getCollectionList = function (dateStart, dateEnd) {
         var _this = this;
         var collectionListObservableArray = new __WEBPACK_IMPORTED_MODULE_4_wijmo_wijmo__["ObservableArray"]();
-        var url = "http://filbrokerwebsite-greentech-api.azurewebsites.net/api/TrnCollection/CollectionFillterByDate/" + dateStart + "/" + dateEnd;
+        var url = "https://filbrokerwebsite-greentech-api.azurewebsites.net/api/TrnCollection/CollectionFillterByDate/" + dateStart + "/" + dateEnd;
         this.http.get(url, this.options).subscribe(function (response) {
             var results = new __WEBPACK_IMPORTED_MODULE_4_wijmo_wijmo__["ObservableArray"](response.json());
             if (results.length > 0) {
@@ -3595,7 +3595,7 @@ var CollectionService = (function () {
     };
     CollectionService.prototype.addCollection = function (btnAddCollection) {
         var _this = this;
-        var url = "http://filbrokerwebsite-greentech-api.azurewebsites.net/api/TrnCollection/Add";
+        var url = "https://filbrokerwebsite-greentech-api.azurewebsites.net/api/TrnCollection/Add";
         this.http.post(url, JSON.stringify(""), this.options).subscribe(function (response) {
             var id = response.json();
             if (id > 0) {
@@ -3617,7 +3617,7 @@ var CollectionService = (function () {
     };
     CollectionService.prototype.deleteCollection = function (id) {
         var _this = this;
-        var url = "http://filbrokerwebsite-greentech-api.azurewebsites.net/api/TrnCollection/Delete/" + id;
+        var url = "https://filbrokerwebsite-greentech-api.azurewebsites.net/api/TrnCollection/Delete/" + id;
         this.http.delete(url, this.options).subscribe(function (response) {
             _this.collectionDeletedSource.next(1);
         }, function (error) {
@@ -3627,7 +3627,7 @@ var CollectionService = (function () {
     CollectionService.prototype.getCustomers = function () {
         var _this = this;
         var customers = new __WEBPACK_IMPORTED_MODULE_4_wijmo_wijmo__["ObservableArray"]();
-        var url = "http://filbrokerwebsite-greentech-api.azurewebsites.net/api/TrnCollection/CustomerList";
+        var url = "https://filbrokerwebsite-greentech-api.azurewebsites.net/api/TrnCollection/CustomerList";
         this.http.get(url, this.options).subscribe(function (response) {
             var results = new __WEBPACK_IMPORTED_MODULE_4_wijmo_wijmo__["ObservableArray"](response.json());
             if (results.length > 0) {
@@ -3647,7 +3647,7 @@ var CollectionService = (function () {
     CollectionService.prototype.getSoldUnits = function (customerId) {
         var _this = this;
         var soldUnits = new __WEBPACK_IMPORTED_MODULE_4_wijmo_wijmo__["ObservableArray"]();
-        var url = "http://filbrokerwebsite-greentech-api.azurewebsites.net/api/TrnCollectionPayment/SoldUnits/" + customerId;
+        var url = "https://filbrokerwebsite-greentech-api.azurewebsites.net/api/TrnCollectionPayment/SoldUnits/" + customerId;
         this.http.get(url, this.options).subscribe(function (response) {
             var results = new __WEBPACK_IMPORTED_MODULE_4_wijmo_wijmo__["ObservableArray"](response.json());
             if (results.length > 0) {
@@ -3667,7 +3667,7 @@ var CollectionService = (function () {
     CollectionService.prototype.getSysDropDown = function () {
         var _this = this;
         var sysDropDown = new __WEBPACK_IMPORTED_MODULE_4_wijmo_wijmo__["ObservableArray"]();
-        var url = "http://filbrokerwebsite-greentech-api.azurewebsites.net/api/TrnCollectionPayment/SysDropDown";
+        var url = "https://filbrokerwebsite-greentech-api.azurewebsites.net/api/TrnCollectionPayment/SysDropDown";
         this.http.get(url, this.options).subscribe(function (response) {
             var results = new __WEBPACK_IMPORTED_MODULE_4_wijmo_wijmo__["ObservableArray"](response.json());
             if (results.length > 0) {
@@ -3687,7 +3687,7 @@ var CollectionService = (function () {
     CollectionService.prototype.getUsers = function () {
         var _this = this;
         var users = new __WEBPACK_IMPORTED_MODULE_4_wijmo_wijmo__["ObservableArray"]();
-        var url = "http://filbrokerwebsite-greentech-api.azurewebsites.net/api/TrnCollection/UserList";
+        var url = "https://filbrokerwebsite-greentech-api.azurewebsites.net/api/TrnCollection/UserList";
         this.http.get(url, this.options).subscribe(function (response) {
             var results = new __WEBPACK_IMPORTED_MODULE_4_wijmo_wijmo__["ObservableArray"](response.json());
             if (results.length > 0) {
@@ -3707,7 +3707,7 @@ var CollectionService = (function () {
     CollectionService.prototype.getCollectionDetail = function (id) {
         var _this = this;
         var collectionDetailData;
-        var url = "http://filbrokerwebsite-greentech-api.azurewebsites.net/api/TrnCollection/Detail/" + id;
+        var url = "https://filbrokerwebsite-greentech-api.azurewebsites.net/api/TrnCollection/Detail/" + id;
         this.http.get(url, this.options).subscribe(function (response) {
             var result = response.json();
             if (result != null) {
@@ -3736,7 +3736,7 @@ var CollectionService = (function () {
     };
     CollectionService.prototype.saveCollection = function (collection) {
         var _this = this;
-        var url = "http://filbrokerwebsite-greentech-api.azurewebsites.net/api/TrnCollection/Save";
+        var url = "https://filbrokerwebsite-greentech-api.azurewebsites.net/api/TrnCollection/Save";
         this.http.put(url, JSON.stringify(collection), this.options).subscribe(function (response) {
             _this.collectionSaveSource.next(1);
         }, function (error) {
@@ -3745,7 +3745,7 @@ var CollectionService = (function () {
     };
     CollectionService.prototype.lockCollection = function (collection) {
         var _this = this;
-        var url = "http://filbrokerwebsite-greentech-api.azurewebsites.net/api/TrnCollection/Lock";
+        var url = "https://filbrokerwebsite-greentech-api.azurewebsites.net/api/TrnCollection/Lock";
         this.http.put(url, JSON.stringify(collection), this.options).subscribe(function (response) {
             _this.collectionLockedSource.next(1);
         }, function (error) {
@@ -3754,7 +3754,7 @@ var CollectionService = (function () {
     };
     CollectionService.prototype.unLockCollection = function (collection) {
         var _this = this;
-        var url = "http://filbrokerwebsite-greentech-api.azurewebsites.net/api/TrnCollection/UnLock";
+        var url = "https://filbrokerwebsite-greentech-api.azurewebsites.net/api/TrnCollection/UnLock";
         this.http.put(url, JSON.stringify(collection), this.options).subscribe(function (response) {
             _this.collectionUnLockedSource.next(1);
         }, function (error) {
@@ -3763,7 +3763,7 @@ var CollectionService = (function () {
     };
     CollectionService.prototype.saveCollectionPayment = function (collection) {
         var _this = this;
-        var url = "http://filbrokerwebsite-greentech-api.azurewebsites.net/api/TrnCollection/Lock";
+        var url = "https://filbrokerwebsite-greentech-api.azurewebsites.net/api/TrnCollection/Lock";
         this.http.put(url, JSON.stringify(collection), this.options).subscribe(function (response) {
             _this.collectionSaveSource.next(1);
         }, function (error) {
@@ -3773,7 +3773,7 @@ var CollectionService = (function () {
     CollectionService.prototype.getCollectionPayments = function (collectionId) {
         var _this = this;
         var collectionPayment = new __WEBPACK_IMPORTED_MODULE_4_wijmo_wijmo__["ObservableArray"]();
-        var url = "http://filbrokerwebsite-greentech-api.azurewebsites.net/api/TrnCollectionPayment/CollectionPayment/" + collectionId;
+        var url = "https://filbrokerwebsite-greentech-api.azurewebsites.net/api/TrnCollectionPayment/CollectionPayment/" + collectionId;
         this.http.get(url, this.options).subscribe(function (response) {
             var results = new __WEBPACK_IMPORTED_MODULE_4_wijmo_wijmo__["ObservableArray"](response.json());
             if (results.length > 0) {
@@ -3801,7 +3801,7 @@ var CollectionService = (function () {
     };
     CollectionService.prototype.addCollectionPayment = function (collectionPayment) {
         var _this = this;
-        var url = "http://filbrokerwebsite-greentech-api.azurewebsites.net/api/TrnCollectionPayment/Add";
+        var url = "https://filbrokerwebsite-greentech-api.azurewebsites.net/api/TrnCollectionPayment/Add";
         this.http.post(url, JSON.stringify(collectionPayment), this.options).subscribe(function (response) {
             _this.saveCollectionPaymentSource.next(1);
         }, function (error) {
@@ -3810,7 +3810,7 @@ var CollectionService = (function () {
     };
     CollectionService.prototype.deleteCollectionPayment = function (id) {
         var _this = this;
-        var url = "http://filbrokerwebsite-greentech-api.azurewebsites.net/api/TrnCollectionPayment/Delete/" + id;
+        var url = "https://filbrokerwebsite-greentech-api.azurewebsites.net/api/TrnCollectionPayment/Delete/" + id;
         this.http.delete(url, this.options).subscribe(function (response) {
             _this.collectionPaymentDeletedSource.next(1);
         }, function (error) {
@@ -3819,7 +3819,7 @@ var CollectionService = (function () {
     };
     CollectionService.prototype.updateCollectionPayment = function (collectionPayment) {
         var _this = this;
-        var url = "http://filbrokerwebsite-greentech-api.azurewebsites.net/api/TrnCollectionPayment/Update";
+        var url = "https://filbrokerwebsite-greentech-api.azurewebsites.net/api/TrnCollectionPayment/Update";
         this.http.put(url, JSON.stringify(collectionPayment), this.options).subscribe(function (response) {
             _this.updateCollectionPaymentSource.next(1);
         }, function (error) {
@@ -4477,7 +4477,7 @@ var CommissionService = (function () {
     // list and detail
     CommissionService.prototype.getCommissionsPerDates = function (dateStart, dateEnd) {
         var _this = this;
-        var url = "http://filbrokerwebsite-greentech-api.azurewebsites.net/api/TrnCommissionRequest/ListPerDates/" + dateStart + "/" + dateEnd;
+        var url = "https://filbrokerwebsite-greentech-api.azurewebsites.net/api/TrnCommissionRequest/ListPerDates/" + dateStart + "/" + dateEnd;
         var commissionRequest = new __WEBPACK_IMPORTED_MODULE_4_wijmo_wijmo__["ObservableArray"]();
         this.http.get(url, this.options).subscribe(function (response) {
             var results = new __WEBPACK_IMPORTED_MODULE_4_wijmo_wijmo__["ObservableArray"](response.json());
@@ -4519,7 +4519,7 @@ var CommissionService = (function () {
     CommissionService.prototype.getCommission = function (id) {
         var _this = this;
         var commission;
-        var url = "http://filbrokerwebsite-greentech-api.azurewebsites.net/api/TrnCommissionRequest/Detail/" + id;
+        var url = "https://filbrokerwebsite-greentech-api.azurewebsites.net/api/TrnCommissionRequest/Detail/" + id;
         this.http.get(url, this.options).subscribe(function (response) {
             var result = response.json();
             if (result != null) {
@@ -4560,7 +4560,7 @@ var CommissionService = (function () {
     // combo boxes
     CommissionService.prototype.getSoldUnits = function () {
         var _this = this;
-        var url = "http://filbrokerwebsite-greentech-api.azurewebsites.net/api/TrnSoldUnit/List";
+        var url = "https://filbrokerwebsite-greentech-api.azurewebsites.net/api/TrnSoldUnit/List";
         var soldUnits = new __WEBPACK_IMPORTED_MODULE_4_wijmo_wijmo__["ObservableArray"]();
         this.http.get(url, this.options).subscribe(function (response) {
             var results = new __WEBPACK_IMPORTED_MODULE_4_wijmo_wijmo__["ObservableArray"](response.json());
@@ -4609,7 +4609,7 @@ var CommissionService = (function () {
     };
     CommissionService.prototype.getBrokers = function () {
         var _this = this;
-        var url = "http://filbrokerwebsite-greentech-api.azurewebsites.net/api/MstBroker/List";
+        var url = "https://filbrokerwebsite-greentech-api.azurewebsites.net/api/MstBroker/List";
         var brokers = new __WEBPACK_IMPORTED_MODULE_4_wijmo_wijmo__["ObservableArray"]();
         this.http.get(url, this.options).subscribe(function (response) {
             var results = new __WEBPACK_IMPORTED_MODULE_4_wijmo_wijmo__["ObservableArray"](response.json());
@@ -4630,7 +4630,7 @@ var CommissionService = (function () {
     };
     CommissionService.prototype.getUsers = function () {
         var _this = this;
-        var url = "http://filbrokerwebsite-greentech-api.azurewebsites.net/api/MstUser/List";
+        var url = "https://filbrokerwebsite-greentech-api.azurewebsites.net/api/MstUser/List";
         var users = new __WEBPACK_IMPORTED_MODULE_4_wijmo_wijmo__["ObservableArray"]();
         this.http.get(url, this.options).subscribe(function (response) {
             var results = new __WEBPACK_IMPORTED_MODULE_4_wijmo_wijmo__["ObservableArray"](response.json());
@@ -4651,7 +4651,7 @@ var CommissionService = (function () {
     CommissionService.prototype.getDropDowns = function () {
         var _this = this;
         var dropDowns = new __WEBPACK_IMPORTED_MODULE_4_wijmo_wijmo__["ObservableArray"]();
-        var url = "http://filbrokerwebsite-greentech-api.azurewebsites.net/api/SysDropDown/List";
+        var url = "https://filbrokerwebsite-greentech-api.azurewebsites.net/api/SysDropDown/List";
         this.http.get(url, this.options).subscribe(function (response) {
             var results = new __WEBPACK_IMPORTED_MODULE_4_wijmo_wijmo__["ObservableArray"](response.json());
             if (results.length > 0) {
@@ -4674,7 +4674,7 @@ var CommissionService = (function () {
     // list operations
     CommissionService.prototype.addCommission = function (commission, btnAddCommission) {
         var _this = this;
-        var url = "http://filbrokerwebsite-greentech-api.azurewebsites.net/api/TrnCommissionRequest/Add";
+        var url = "https://filbrokerwebsite-greentech-api.azurewebsites.net/api/TrnCommissionRequest/Add";
         this.http.post(url, JSON.stringify(commission), this.options).subscribe(function (response) {
             var id = response.json();
             if (id > 0) {
@@ -4696,7 +4696,7 @@ var CommissionService = (function () {
     };
     CommissionService.prototype.deleteCommission = function (id) {
         var _this = this;
-        var url = "http://filbrokerwebsite-greentech-api.azurewebsites.net/api/TrnCommissionRequest/Delete/" + id;
+        var url = "https://filbrokerwebsite-greentech-api.azurewebsites.net/api/TrnCommissionRequest/Delete/" + id;
         this.http.delete(url, this.options).subscribe(function (response) {
             _this.commissionDeletedSource.next(1);
         }, function (error) {
@@ -4706,7 +4706,7 @@ var CommissionService = (function () {
     // detail operations
     CommissionService.prototype.saveCommission = function (commission) {
         var _this = this;
-        var url = "http://filbrokerwebsite-greentech-api.azurewebsites.net/api/TrnCommissionRequest/Save";
+        var url = "https://filbrokerwebsite-greentech-api.azurewebsites.net/api/TrnCommissionRequest/Save";
         this.http.put(url, JSON.stringify(commission), this.options).subscribe(function (response) {
             _this.commissionSavedSource.next(1);
         }, function (error) {
@@ -4715,7 +4715,7 @@ var CommissionService = (function () {
     };
     CommissionService.prototype.lockCommission = function (commission) {
         var _this = this;
-        var url = "http://filbrokerwebsite-greentech-api.azurewebsites.net/api/TrnCommissionRequest/Lock";
+        var url = "https://filbrokerwebsite-greentech-api.azurewebsites.net/api/TrnCommissionRequest/Lock";
         this.http.put(url, JSON.stringify(commission), this.options).subscribe(function (response) {
             _this.commissionLockedSource.next(1);
         }, function (error) {
@@ -4724,7 +4724,7 @@ var CommissionService = (function () {
     };
     CommissionService.prototype.unlockCommission = function (commission) {
         var _this = this;
-        var url = "http://filbrokerwebsite-greentech-api.azurewebsites.net/api/TrnCommissionRequest/Unlock";
+        var url = "https://filbrokerwebsite-greentech-api.azurewebsites.net/api/TrnCommissionRequest/Unlock";
         this.http.put(url, JSON.stringify(commission), this.options).subscribe(function (response) {
             _this.commissionUnlockedSource.next(1);
         }, function (error) {
@@ -4747,7 +4747,7 @@ var CommissionService = (function () {
 /***/ "../../../../../src/app/customer/customer.detail.html":
 /***/ (function(module, exports) {
 
-module.exports = "<menu-root></menu-root>\r\n\r\n<br>\r\n<br>\r\n\r\n<div class=\"content-wrapper\">\r\n\r\n    <div class=\"container-fluid\">\r\n\r\n        <!-- crumbs -->\r\n        <ol class=\"breadcrumb\">\r\n            <li class=\"breadcrumb-item\">\r\n                <a routerLink=\"/menu\">Menu</a>\r\n            </li>\r\n            <li class=\"breadcrumb-item\">\r\n                <a routerLink=\"/broker\">Customer List</a>\r\n            </li>\r\n            <li class=\"breadcrumb-item active\">{{title}}</li>\r\n        </ol>\r\n\r\n        <div class=\"card\">\r\n\r\n            <!-- detail operations, print, lock, unlock, save, close -->\r\n            <div class=\"card-header\">\r\n                <table border=\"0\" style=\"width: 100%;\">\r\n                    <tr>\r\n                        <td style=\"width: 50%;\">\r\n                            <h4>{{title}}</h4>\r\n                        </td>\r\n                        <td style=\"width: 1%;\"></td>\r\n                        <td style=\"width: 49%;\" align=\"right\">\r\n                            <div class=\"btn-group\">\r\n                                <button [disabled]=\"!customer.isLocked\" class=\"btn btn-primary\" type=\"button\" (click)=\"btnPrintCustomerClick()\" id=\"btnPrintCustomer\">\r\n                                    <i class=\"fa fa-print fa-fw\"></i> Print\r\n                                </button>\r\n                                <button type=\"button\" class=\"btn btn-primary dropdown-toggle dropdown-toggle-split\"\r\n                                    data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">\r\n                                    <span class=\"sr-only\">Toggle Dropdown</span>\r\n                                </button>\r\n                                <div class=\"dropdown-menu\">\r\n                                    <a class=\"dropdown-item\" routerLink=\".\" (click)=\"btnPrintReservationAgreementClick()\">Reservation Agreement</a>\r\n                                    <a class=\"dropdown-item\" routerLink=\".\" (click)=\"btnPrintBuyersUndertakingClick()\">Buyer's\r\n                                        Undertaking</a>\r\n                                    <a class=\"dropdown-item\" routerLink=\".\" (click)=\"btnPrintComputationSheetClick()\">Computatio Sheet</a>\r\n                                </div>\r\n                            </div>\r\n                            <button [disabled]=\"customer.isLocked\" class=\"btn btn-primary\" (click)=\"btnLockCustomerClick()\" id=\"btnLockCustomer\">\r\n                                <i class=\"fa fa-lock fa-fw\"></i> Lock\r\n                            </button>\r\n                            <button [disabled]=\"!customer.isLocked\" class=\"btn btn-primary\" (click)=\"btnUnlockCustomerClick()\" id=\"btnUnlockCustomer\">\r\n                                <i class=\"fa fa-unlock fa-fw\"></i> Unlock\r\n                            </button>\r\n                            <button [disabled]=\"customer.isLocked\" class=\"btn btn-primary\" (click)=\"btnSaveCustomerClick()\" id=\"btnSaveCustomer\">\r\n                                <i class=\"fa fa-save fa-fw\"></i> Save\r\n                            </button>\r\n                            <button class=\"btn btn-danger\" routerLink=\"/customer\">\r\n                                <i class=\"fa fa-close fa-fw\"></i> Close\r\n                            </button>\r\n                        </td>\r\n                    </tr>\r\n                </table>\r\n            </div>\r\n            <!-- <div class=\"card-header\"> -->\r\n\r\n            <div class=\"card-body\">\r\n                <ul class=\"nav nav-tabs\" role=\"tablist\">\r\n                    <li class=\"\">\r\n                        <a [ngClass]=\"{'active': tabDetail1[0], 'nav-link': true }\" (click)=\"tabDetail1Click(0)\" data-toggle=\"tab\" role=\"tab\">Customer Information</a>\r\n                    </li>\r\n                    <li class=\"\">\r\n                        <a [ngClass]=\"{'active': tabDetail1[1], 'nav-link': true }\" (click)=\"tabDetail1Click(1)\" data-toggle=\"tab\" role=\"tab\">Employment Information</a>\r\n                    </li>\r\n                </ul>\r\n                <br>\r\n                <div class=\"tab-content\">\r\n                    <div [ngClass]=\"{'active': tabDetail1[0], 'tab-pane': true }\" role=\"tabpanel\">\r\n                        <div class=\"row\">\r\n                            <div class=\"col-md-6\">\r\n                                <div class=\"form-group row\">\r\n                                    <label class=\"col-sm-4 col-form-label text-right\">Code</label>\r\n                                    <div class=\"col-sm-8\">\r\n                                        <input [(ngModel)]=\"customer.customerCode\" [disabled]=true type=\"text\" class=\"form-control\">\r\n                                    </div>\r\n                                </div>\r\n                                <div class=\"form-group row\">\r\n                                    <label class=\"col-sm-4 col-form-label text-right\">Last Name</label>\r\n                                    <div class=\"col-sm-8\">\r\n                                        <input [(ngModel)]=\"customer.lastName\" [disabled]=\"customer.isLocked\" (input)=\"txtLastNameKeyup()\" type=\"text\" class=\"form-control\">\r\n                                    </div>\r\n                                </div>\r\n                                <div class=\"form-group row\">\r\n                                    <label class=\"col-sm-4 col-form-label text-right\">First Name</label>\r\n                                    <div class=\"col-sm-8\">\r\n                                        <input [(ngModel)]=\"customer.firstName\" [disabled]=\"customer.isLocked\" (input)=\"txtFirstNameKeyup()\" type=\"text\" class=\"form-control\">\r\n                                    </div>\r\n                                </div>\r\n                                <div class=\"form-group row\">\r\n                                    <label class=\"col-sm-4 col-form-label text-right\">Middle Name</label>\r\n                                    <div class=\"col-sm-8\">\r\n                                        <input [(ngModel)]=\"customer.middleName\" [disabled]=\"customer.isLocked\" (input)=\"txtLastNameKeyup()\" type=\"text\" class=\"form-control\">\r\n                                    </div>\r\n                                </div>\r\n                                <div class=\"form-group row\">\r\n                                    <label class=\"col-sm-4 col-form-label text-right\">Phone No.</label>\r\n                                    <div class=\"col-sm-8\">\r\n                                        <input [(ngModel)]=\"customer.telephoneNumber\" [disabled]=\"customer.isLocked\" type=\"text\" class=\"form-control\">\r\n                                    </div>\r\n                                </div>\r\n                                <div class=\"form-group row\">\r\n                                    <label class=\"col-sm-4 col-form-label text-right\">Mobile No.</label>\r\n                                    <div class=\"col-sm-8\">\r\n                                        <input [(ngModel)]=\"customer.mobileNumber\" [disabled]=\"customer.isLocked\" type=\"text\" class=\"form-control\">\r\n                                    </div>\r\n                                </div>\r\n                                <div class=\"form-group row\">\r\n                                    <label class=\"col-sm-4 col-form-label text-right\">Street Address</label>\r\n                                    <div class=\"col-sm-8\">\r\n                                        <textarea [disabled]=\"customer.isLocked\" [(ngModel)]=\"customer.address\" rows=\"4\" class=\"form-control\">\r\n                                        </textarea>\r\n                                    </div>\r\n                                </div>\r\n                                <div class=\"form-group row\">\r\n                                    <label class=\"col-sm-4 col-form-label text-right\">City</label>\r\n                                    <div class=\"col-sm-8\">\r\n                                        <input [(ngModel)]=\"customer.city\" [disabled]=\"customer.isLocked\" type=\"text\" class=\"form-control\">\r\n                                    </div>\r\n                                </div>\r\n                                <div class=\"form-group row\">\r\n                                    <label class=\"col-sm-4 col-form-label text-right\">Province</label>\r\n                                    <div class=\"col-sm-8\">\r\n                                        <input [(ngModel)]=\"customer.province\" [disabled]=\"customer.isLocked\" type=\"text\" class=\"form-control\">\r\n                                    </div>\r\n                                </div>\r\n                                <div class=\"form-group row\">\r\n                                    <label class=\"col-sm-4 col-form-label text-right\">Country</label>\r\n                                    <div class=\"col-sm-8\">\r\n                                        <input [(ngModel)]=\"customer.country\" [disabled]=\"customer.isLocked\" type=\"text\" class=\"form-control\">\r\n                                    </div>\r\n                                </div>\r\n                                <div class=\"form-group row\">\r\n                                    <label class=\"col-sm-4 col-form-label text-right\">Zip Code</label>\r\n                                    <div class=\"col-sm-8\">\r\n                                        <input [(ngModel)]=\"customer.zipCode\" [disabled]=\"customer.isLocked\" type=\"text\" class=\"form-control\">\r\n                                    </div>\r\n                                </div>\r\n                                <div class=\"form-group row\">\r\n                                    <label class=\"col-sm-4 col-form-label text-right\">Status</label>\r\n                                    <div class=\"col-sm-8\">\r\n                                        <wj-combo-box #cmbStatus [itemsSource]=\"cmbStatusData\" [isEditable]=\"false\" [isRequired]=\"true\" [displayMemberPath]=\"'value'\"\r\n                                            [selectedValuePath]=\"'value'\" [isDisabled]=\"customer.isLocked\" [(ngModel)]=\"customer.status\">\r\n                                        </wj-combo-box>\r\n                                    </div>\r\n                                </div>\r\n                                <div class=\"form-group row\">\r\n                                    <label class=\"col-sm-4 col-form-label text-right\">Email Address</label>\r\n                                    <div class=\"col-sm-8\">\r\n                                        <input [(ngModel)]=\"customer.emailAddress\" [disabled]=\"customer.isLocked\" type=\"text\" class=\"form-control\">\r\n                                    </div>\r\n                                </div>\r\n                                <div class=\"form-group row\">\r\n                                    <label class=\"col-sm-4 col-form-label text-right\">Citizen</label>\r\n                                    <div class=\"col-sm-8\">\r\n                                        <input [(ngModel)]=\"customer.citizen\" [disabled]=\"customer.isLocked\" type=\"text\" class=\"form-control\">\r\n                                    </div>\r\n                                </div>\r\n                                <div class=\"form-group row\">\r\n                                    <label class=\"col-sm-4 col-form-label text-right\">Remarks</label>\r\n                                    <div class=\"col-sm-8\">\r\n                                        <textarea [disabled]=\"customer.isLocked\" [(ngModel)]=\"customer.remarks\" rows=\"8\" class=\"form-control\">\r\n                                        </textarea>\r\n                                    </div>\r\n                                </div>\r\n                            </div>\r\n                            <!-- <div customer info column 1> -->\r\n                            <div class=\"col-md-6\">\r\n                                <div class=\"form-group row\">\r\n                                    <label class=\"col-sm-4 col-form-label text-right\">Picture</label>\r\n                                    <div class=\"col-sm-8\">\r\n                                        <div class=\"row\">\r\n                                            <div class=\"col-sm-8\">\r\n                                                <img [src]=\"this.customer.picture\" class=\"rounded\" style=\"width: 100%;\">\r\n                                            </div>\r\n                                            <div class=\"col-sm-4\">\r\n                                                <label class=\"btn btn-primary pull-right\" [hidden]=\"customer.isLocked\">\r\n                                                    <input type=\"file\" (change)=\"btnUploadPictureClick($event)\" name=\"btnUploadPicture\" accept=\"image/*\" style=\"display:none;\"> Upload\r\n                                                </label>\r\n                                            </div>\r\n                                        </div>\r\n                                    </div>\r\n                                </div>\r\n                                <div class=\"form-group row\">\r\n                                    <label class=\"col-sm-4 col-form-label text-right\">Civil Status</label>\r\n                                    <div class=\"col-sm-8\">\r\n                                        <wj-combo-box #cmbCivilStatus [itemsSource]=\"cmbCivilStatusData\" [isEditable]=\"false\" [isRequired]=\"true\" [displayMemberPath]=\"'value'\"\r\n                                            [selectedValuePath]=\"'value'\" [isDisabled]=\"customer.isLocked\" [(ngModel)]=\"customer.civilStatus\">\r\n                                        </wj-combo-box>\r\n                                    </div>\r\n                                </div>\r\n                                <div class=\"form-group row\">\r\n                                    <label class=\"col-sm-4 col-form-label text-right\">Gender</label>\r\n                                    <div class=\"col-sm-8\">\r\n                                        <wj-combo-box #cmbGender [itemsSource]=\"cmbGenderData\" [isEditable]=\"false\" [isRequired]=\"true\" [displayMemberPath]=\"'value'\"\r\n                                            [selectedValuePath]=\"'value'\" [isDisabled]=\"customer.isLocked\" [(ngModel)]=\"customer.gender\">\r\n                                        </wj-combo-box>\r\n                                    </div>\r\n                                </div>\r\n                                <div class=\"form-group row\">\r\n                                    <label class=\"col-sm-4 col-form-label text-right\">Birth Date</label>\r\n                                    <div class=\"col-sm-8\">\r\n                                        <wj-input-date #calBirthDate [(text)]=\"customer.birthDate\" [isDisabled]=\"customer.isLocked\" format=\"M/d/yyyy\">\r\n                                        </wj-input-date>\r\n                                    </div>\r\n                                </div>\r\n                                <div class=\"form-group row\">\r\n                                    <label class=\"col-sm-4 col-form-label text-right\">TIN</label>\r\n                                    <div class=\"col-sm-8\">\r\n                                        <input [(ngModel)]=\"customer.tin\" [disabled]=\"customer.isLocked\" type=\"text\" class=\"form-control\">\r\n                                    </div>\r\n                                </div>\r\n                                <div class=\"form-group row\">\r\n                                    <label class=\"col-sm-4 col-form-label text-right\">Spouse Last Name</label>\r\n                                    <div class=\"col-sm-8\">\r\n                                        <input [(ngModel)]=\"customer.spouseLastName\" [disabled]=\"customer.isLocked\" type=\"text\" class=\"form-control\">\r\n                                    </div>\r\n                                </div>\r\n                                <div class=\"form-group row\">\r\n                                    <label class=\"col-sm-4 col-form-label text-right\">Spouse First Name</label>\r\n                                    <div class=\"col-sm-8\">\r\n                                        <input [(ngModel)]=\"customer.spouseFirstName\" [disabled]=\"customer.isLocked\" type=\"text\" class=\"form-control\">\r\n                                    </div>\r\n                                </div>\r\n                                <div class=\"form-group row\">\r\n                                    <label class=\"col-sm-4 col-form-label text-right\">Spouse Middle Name</label>\r\n                                    <div class=\"col-sm-8\">\r\n                                        <input [(ngModel)]=\"customer.spouseMiddleName\" [disabled]=\"customer.isLocked\" type=\"text\" class=\"form-control\">\r\n                                    </div>\r\n                                </div>\r\n                                <div class=\"form-group row\">\r\n                                    <label class=\"col-sm-4 col-form-label text-right\">Spouse Birth Date</label>\r\n                                    <div class=\"col-sm-8\">\r\n                                        <wj-input-date #calBirthDate [(text)]=\"customer.spouseBirthDate\" [isDisabled]=\"customer.isLocked\" format=\"M/d/yyyy\">\r\n                                        </wj-input-date>\r\n                                    </div>\r\n                                </div>\r\n                                <div class=\"form-group row\">\r\n                                    <label class=\"col-sm-4 col-form-label text-right\">Spouse Citizen</label>\r\n                                    <div class=\"col-sm-8\">\r\n                                        <input [(ngModel)]=\"customer.spouseCitizen\" [disabled]=\"customer.isLocked\" type=\"text\" class=\"form-control\">\r\n                                    </div>\r\n                                </div>\r\n                                <div class=\"form-group row\">\r\n                                    <label class=\"col-sm-4 col-form-label text-right\">Spouse Employer</label>\r\n                                    <div class=\"col-sm-8\">\r\n                                        <input [(ngModel)]=\"customer.spouseEmployer\" [disabled]=\"customer.isLocked\" type=\"text\" class=\"form-control\">\r\n                                    </div>\r\n                                </div>\r\n                                <div class=\"form-group row\">\r\n                                    <label class=\"col-sm-4 col-form-label text-right\">Spouse TIN</label>\r\n                                    <div class=\"col-sm-8\">\r\n                                        <input [(ngModel)]=\"customer.spouseTIN\" [disabled]=\"customer.isLocked\" type=\"text\" class=\"form-control\">\r\n                                    </div>\r\n                                </div>\r\n                            </div>\r\n                            <!-- <div customer info column 2> -->\r\n                        </div>\r\n                    </div>\r\n                    <!-- <div tabpanel:customer info> -->\r\n                    <div [ngClass]=\"{'active': tabDetail1[1], 'tab-pane': true }\" role=\"tabpanel\">\r\n                        <div class=\"row\">\r\n                            <div class=\"col-md-6\">\r\n                                <div class=\"form-group row\">\r\n                                    <label class=\"col-sm-4 col-form-label text-right\">ID Type</label>\r\n                                    <div class=\"col-sm-8\">\r\n                                        <wj-combo-box #cmbIDType [itemsSource]=\"cmbIDTypeData\" [isEditable]=\"false\" [isRequired]=\"true\" [displayMemberPath]=\"'value'\"\r\n                                            [selectedValuePath]=\"'value'\" [isDisabled]=\"customer.isLocked\" [(ngModel)]=\"customer.idType\">\r\n                                        </wj-combo-box>\r\n                                    </div>\r\n                                </div>\r\n                                <div class=\"form-group row\">\r\n                                    <label class=\"col-sm-4 col-form-label text-right\">ID Number</label>\r\n                                    <div class=\"col-sm-8\">\r\n                                        <input [(ngModel)]=\"customer.idNumber\" [disabled]=\"customer.isLocked\" type=\"text\" class=\"form-control\">\r\n                                    </div>\r\n                                </div>\r\n                                <div class=\"form-group row\">\r\n                                    <label class=\"col-sm-4 col-form-label text-right\">Employer</label>\r\n                                    <div class=\"col-sm-8\">\r\n                                        <input [(ngModel)]=\"customer.employer\" [disabled]=\"customer.isLocked\" type=\"text\" class=\"form-control\">\r\n                                    </div>\r\n                                </div>\r\n                                <div class=\"form-group row\">\r\n                                    <label class=\"col-sm-4 col-form-label text-right\">Employer Industry</label>\r\n                                    <div class=\"col-sm-8\">\r\n                                        <input [(ngModel)]=\"customer.employerIndustry\" [disabled]=\"customer.isLocked\" type=\"text\" class=\"form-control\">\r\n                                    </div>\r\n                                </div>\r\n                                <div class=\"form-group row\">\r\n                                    <label class=\"col-sm-4 col-form-label text-right\">No. of Years Employed</label>\r\n                                    <div class=\"col-sm-8\">\r\n                                        <input [(ngModel)]=\"customer.noOfYearsEmployed\" [disabled]=\"customer.isLocked\" type=\"text\" class=\"form-control\">\r\n                                    </div>\r\n                                </div>\r\n                                <div class=\"form-group row\">\r\n                                    <label class=\"col-sm-4 col-form-label text-right\">Position</label>\r\n                                    <div class=\"col-sm-8\">\r\n                                        <input [(ngModel)]=\"customer.position\" [disabled]=\"customer.isLocked\" type=\"text\" class=\"form-control\">\r\n                                    </div>\r\n                                </div>\r\n                                <div class=\"form-group row\">\r\n                                    <label class=\"col-sm-4 col-form-label text-right\">Employment Status</label>\r\n                                    <div class=\"col-sm-8\">\r\n                                        <wj-combo-box #cmbEmploymentStatus [itemsSource]=\"cmbEmploymentStatusData\" [(ngModel)]=\"customer.employmentStatus\" [isEditable]=\"false\"\r\n                                            [isRequired]=\"true\" [displayMemberPath]=\"'value'\" [selectedValuePath]=\"'value'\" [isDisabled]=\"customer.isLocked\">\r\n                                        </wj-combo-box>\r\n                                    </div>\r\n                                </div>\r\n                                <div class=\"form-group row\">\r\n                                    <label class=\"col-sm-4 col-form-label text-right\">Street Address</label>\r\n                                    <div class=\"col-sm-8\">\r\n                                        <textarea [disabled]=\"customer.isLocked\" [(ngModel)]=\"customer.employerAddress\" rows=\"4\" class=\"form-control\">\r\n                                        </textarea>\r\n                                    </div>\r\n                                </div>\r\n                            </div>\r\n                            <!-- <div employment info column 1> -->\r\n                            <div class=\"col-md-6\">\r\n                                <div class=\"form-group row\">\r\n                                    <label class=\"col-sm-4 col-form-label text-right\">City</label>\r\n                                    <div class=\"col-sm-8\">\r\n                                        <input [(ngModel)]=\"customer.employerCity\" [disabled]=\"customer.isLocked\" type=\"text\" class=\"form-control\">\r\n                                    </div>\r\n                                </div>\r\n                                <div class=\"form-group row\">\r\n                                    <label class=\"col-sm-4 col-form-label text-right\">Province</label>\r\n                                    <div class=\"col-sm-8\">\r\n                                        <input [(ngModel)]=\"customer.employerProvince\" [disabled]=\"customer.isLocked\" type=\"text\" class=\"form-control\">\r\n                                    </div>\r\n                                </div>\r\n                                <div class=\"form-group row\">\r\n                                    <label class=\"col-sm-4 col-form-label text-right\">Country</label>\r\n                                    <div class=\"col-sm-8\">\r\n                                        <input [(ngModel)]=\"customer.employerCountry\" [disabled]=\"customer.isLocked\" type=\"text\" class=\"form-control\">\r\n                                    </div>\r\n                                </div>\r\n                                <div class=\"form-group row\">\r\n                                    <label class=\"col-sm-4 col-form-label text-right\">Zip Code</label>\r\n                                    <div class=\"col-sm-8\">\r\n                                        <input [(ngModel)]=\"customer.employerZipCode\" [disabled]=\"customer.isLocked\" type=\"text\" class=\"form-control\">\r\n                                    </div>\r\n                                </div>\r\n                                <div class=\"form-group row\">\r\n                                    <label class=\"col-sm-4 col-form-label text-right\">Telephone No.</label>\r\n                                    <div class=\"col-sm-8\">\r\n                                        <input [(ngModel)]=\"customer.employerTelephoneNumber\" [disabled]=\"customer.isLocked\" type=\"text\" class=\"form-control\">\r\n                                    </div>\r\n                                </div>\r\n                                <div class=\"form-group row\">\r\n                                    <label class=\"col-sm-4 col-form-label text-right\">Mobile No.</label>\r\n                                    <div class=\"col-sm-8\">\r\n                                        <input [(ngModel)]=\"customer.employerMobileNumber\" [disabled]=\"customer.isLocked\" type=\"text\" class=\"form-control\">\r\n                                    </div>\r\n                                </div>\r\n                            </div>\r\n                            <!-- <div employment info column 2> -->\r\n                        </div>\r\n                    </div>\r\n                    <!-- <div tabpanel:employment info> -->\r\n                </div>\r\n                <!-- <div class=\"tab-content\"> -->\r\n            </div>\r\n            <!-- <div class=\"card-body\"> -->\r\n\r\n        </div>\r\n        <!-- <div class=\"card\"> -->\r\n\r\n    </div>\r\n    <!-- <div class=\"container-fluid\"> -->\r\n\r\n    <app-footer [data]=\"customer\"></app-footer>\r\n\r\n</div>\r\n<!-- <div class=\"content-wrapper\"> -->"
+module.exports = "<menu-root></menu-root>\r\n\r\n<br>\r\n<br>\r\n\r\n<div class=\"content-wrapper\">\r\n\r\n    <div class=\"container-fluid\">\r\n\r\n        <!-- crumbs -->\r\n        <ol class=\"breadcrumb\">\r\n            <li class=\"breadcrumb-item\">\r\n                <a routerLink=\"/menu\">Menu</a>\r\n            </li>\r\n            <li class=\"breadcrumb-item\">\r\n                <a routerLink=\"/broker\">Customer List</a>\r\n            </li>\r\n            <li class=\"breadcrumb-item active\">{{title}}</li>\r\n        </ol>\r\n\r\n        <div class=\"card\">\r\n\r\n            <!-- detail operations, print, lock, unlock, save, close -->\r\n            <div class=\"card-header\">\r\n                <table border=\"0\" style=\"width: 100%;\">\r\n                    <tr>\r\n                        <td style=\"width: 50%;\">\r\n                            <h4>{{title}}</h4>\r\n                        </td>\r\n                        <td style=\"width: 1%;\"></td>\r\n                        <td style=\"width: 49%;\" align=\"right\">\r\n                            <div class=\"btn-group\">\r\n                                <button [disabled]=\"!customer.isLocked\" class=\"btn btn-primary\" type=\"button\" (click)=\"btnPrintCustomerClick()\" id=\"btnPrintCustomer\">\r\n                                    <i class=\"fa fa-print fa-fw\"></i> Print\r\n                                </button>\r\n                                <button type=\"button\" class=\"btn btn-primary dropdown-toggle dropdown-toggle-split\"\r\n                                    data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">\r\n                                    <span class=\"sr-only\">Toggle Dropdown</span>\r\n                                </button>\r\n                                <div class=\"dropdown-menu\">\r\n                                    <a class=\"dropdown-item\" routerLink=\".\" (click)=\"btnPrintReservationAgreementClick()\">Reservation Agreement</a>\r\n                                    <a class=\"dropdown-item\" routerLink=\".\" (click)=\"btnPrintBuyersUndertakingClick()\">Buyer's\r\n                                        Undertaking</a>\r\n                                    <a class=\"dropdown-item\" routerLink=\".\" (click)=\"btnPrintComputationSheetClick()\">Computation Sheet</a>\r\n                                </div>\r\n                            </div>\r\n                            <button [disabled]=\"customer.isLocked\" class=\"btn btn-primary\"\r\n                                (click)=\"btnLockCustomerClick()\" id=\"btnLockCustomer\">\r\n                                <i class=\"fa fa-lock fa-fw\"></i> Lock\r\n                            </button>\r\n                            <button [disabled]=\"!customer.isLocked\" class=\"btn btn-primary\"\r\n                                (click)=\"btnUnlockCustomerClick()\" id=\"btnUnlockCustomer\">\r\n                                <i class=\"fa fa-unlock fa-fw\"></i> Unlock\r\n                            </button>\r\n                            <button [disabled]=\"customer.isLocked\" class=\"btn btn-primary\"\r\n                                (click)=\"btnSaveCustomerClick()\" id=\"btnSaveCustomer\">\r\n                                <i class=\"fa fa-save fa-fw\"></i> Save\r\n                            </button>\r\n                            <button class=\"btn btn-danger\" routerLink=\"/customer\">\r\n                                <i class=\"fa fa-close fa-fw\"></i> Close\r\n                            </button>\r\n                        </td>\r\n                    </tr>\r\n                </table>\r\n            </div>\r\n            <!-- <div class=\"card-header\"> -->\r\n\r\n            <div class=\"card-body\">\r\n                <ul class=\"nav nav-tabs\" role=\"tablist\">\r\n                    <li class=\"\">\r\n                        <a [ngClass]=\"{'active': tabDetail1[0], 'nav-link': true }\" (click)=\"tabDetail1Click(0)\"\r\n                            data-toggle=\"tab\" role=\"tab\">Customer Information</a>\r\n                    </li>\r\n                    <li class=\"\">\r\n                        <a [ngClass]=\"{'active': tabDetail1[1], 'nav-link': true }\" (click)=\"tabDetail1Click(1)\"\r\n                            data-toggle=\"tab\" role=\"tab\">Employment Information</a>\r\n                    </li>\r\n                </ul>\r\n                <br>\r\n                <div class=\"tab-content\">\r\n                    <div [ngClass]=\"{'active': tabDetail1[0], 'tab-pane': true }\" role=\"tabpanel\">\r\n                        <div class=\"row\">\r\n                            <div class=\"col-md-6\">\r\n                                <div class=\"form-group row\">\r\n                                    <label class=\"col-sm-4 col-form-label text-right\">Code</label>\r\n                                    <div class=\"col-sm-8\">\r\n                                        <input [(ngModel)]=\"customer.customerCode\" [disabled]=true type=\"text\"\r\n                                            class=\"form-control\">\r\n                                    </div>\r\n                                </div>\r\n                                <div class=\"form-group row\">\r\n                                    <label class=\"col-sm-4 col-form-label text-right\">Last Name</label>\r\n                                    <div class=\"col-sm-8\">\r\n                                        <input [(ngModel)]=\"customer.lastName\" [disabled]=\"customer.isLocked\"\r\n                                            (input)=\"txtLastNameKeyup()\" type=\"text\" class=\"form-control\">\r\n                                    </div>\r\n                                </div>\r\n                                <div class=\"form-group row\">\r\n                                    <label class=\"col-sm-4 col-form-label text-right\">First Name</label>\r\n                                    <div class=\"col-sm-8\">\r\n                                        <input [(ngModel)]=\"customer.firstName\" [disabled]=\"customer.isLocked\"\r\n                                            (input)=\"txtFirstNameKeyup()\" type=\"text\" class=\"form-control\">\r\n                                    </div>\r\n                                </div>\r\n                                <div class=\"form-group row\">\r\n                                    <label class=\"col-sm-4 col-form-label text-right\">Middle Name</label>\r\n                                    <div class=\"col-sm-8\">\r\n                                        <input [(ngModel)]=\"customer.middleName\" [disabled]=\"customer.isLocked\"\r\n                                            (input)=\"txtLastNameKeyup()\" type=\"text\" class=\"form-control\">\r\n                                    </div>\r\n                                </div>\r\n                                <div class=\"form-group row\">\r\n                                    <label class=\"col-sm-4 col-form-label text-right\">Phone No.</label>\r\n                                    <div class=\"col-sm-8\">\r\n                                        <input [(ngModel)]=\"customer.telephoneNumber\" [disabled]=\"customer.isLocked\"\r\n                                            type=\"text\" class=\"form-control\">\r\n                                    </div>\r\n                                </div>\r\n                                <div class=\"form-group row\">\r\n                                    <label class=\"col-sm-4 col-form-label text-right\">Mobile No.</label>\r\n                                    <div class=\"col-sm-8\">\r\n                                        <input [(ngModel)]=\"customer.mobileNumber\" [disabled]=\"customer.isLocked\"\r\n                                            type=\"text\" class=\"form-control\">\r\n                                    </div>\r\n                                </div>\r\n                                <div class=\"form-group row\">\r\n                                    <label class=\"col-sm-4 col-form-label text-right\">Street Address</label>\r\n                                    <div class=\"col-sm-8\">\r\n                                        <textarea [disabled]=\"customer.isLocked\" [(ngModel)]=\"customer.address\" rows=\"4\"\r\n                                            class=\"form-control\">\r\n                                        </textarea>\r\n                                    </div>\r\n                                </div>\r\n                                <div class=\"form-group row\">\r\n                                    <label class=\"col-sm-4 col-form-label text-right\">City</label>\r\n                                    <div class=\"col-sm-8\">\r\n                                        <input [(ngModel)]=\"customer.city\" [disabled]=\"customer.isLocked\" type=\"text\"\r\n                                            class=\"form-control\">\r\n                                    </div>\r\n                                </div>\r\n                                <div class=\"form-group row\">\r\n                                    <label class=\"col-sm-4 col-form-label text-right\">Province</label>\r\n                                    <div class=\"col-sm-8\">\r\n                                        <input [(ngModel)]=\"customer.province\" [disabled]=\"customer.isLocked\"\r\n                                            type=\"text\" class=\"form-control\">\r\n                                    </div>\r\n                                </div>\r\n                                <div class=\"form-group row\">\r\n                                    <label class=\"col-sm-4 col-form-label text-right\">Country</label>\r\n                                    <div class=\"col-sm-8\">\r\n                                        <input [(ngModel)]=\"customer.country\" [disabled]=\"customer.isLocked\" type=\"text\"\r\n                                            class=\"form-control\">\r\n                                    </div>\r\n                                </div>\r\n                                <div class=\"form-group row\">\r\n                                    <label class=\"col-sm-4 col-form-label text-right\">Zip Code</label>\r\n                                    <div class=\"col-sm-8\">\r\n                                        <input [(ngModel)]=\"customer.zipCode\" [disabled]=\"customer.isLocked\" type=\"text\"\r\n                                            class=\"form-control\">\r\n                                    </div>\r\n                                </div>\r\n                                <div class=\"form-group row\">\r\n                                    <label class=\"col-sm-4 col-form-label text-right\">Status</label>\r\n                                    <div class=\"col-sm-8\">\r\n                                        <wj-combo-box #cmbStatus [itemsSource]=\"cmbStatusData\" [isEditable]=\"false\"\r\n                                            [isRequired]=\"true\" [displayMemberPath]=\"'value'\"\r\n                                            [selectedValuePath]=\"'value'\" [isDisabled]=\"customer.isLocked\"\r\n                                            [(ngModel)]=\"customer.status\">\r\n                                        </wj-combo-box>\r\n                                    </div>\r\n                                </div>\r\n                                <div class=\"form-group row\">\r\n                                    <label class=\"col-sm-4 col-form-label text-right\">Email Address</label>\r\n                                    <div class=\"col-sm-8\">\r\n                                        <input [(ngModel)]=\"customer.emailAddress\" [disabled]=\"customer.isLocked\"\r\n                                            type=\"text\" class=\"form-control\">\r\n                                    </div>\r\n                                </div>\r\n                                <div class=\"form-group row\">\r\n                                    <label class=\"col-sm-4 col-form-label text-right\">Citizen</label>\r\n                                    <div class=\"col-sm-8\">\r\n                                        <input [(ngModel)]=\"customer.citizen\" [disabled]=\"customer.isLocked\" type=\"text\"\r\n                                            class=\"form-control\">\r\n                                    </div>\r\n                                </div>\r\n                                <div class=\"form-group row\">\r\n                                    <label class=\"col-sm-4 col-form-label text-right\">Remarks</label>\r\n                                    <div class=\"col-sm-8\">\r\n                                        <textarea [disabled]=\"customer.isLocked\" [(ngModel)]=\"customer.remarks\" rows=\"8\"\r\n                                            class=\"form-control\">\r\n                                        </textarea>\r\n                                    </div>\r\n                                </div>\r\n                            </div>\r\n                            <!-- <div customer info column 1> -->\r\n                            <div class=\"col-md-6\">\r\n                                <div class=\"form-group row\">\r\n                                    <label class=\"col-sm-4 col-form-label text-right\">Picture</label>\r\n                                    <div class=\"col-sm-8\">\r\n                                        <div class=\"row\">\r\n                                            <div class=\"col-sm-8\">\r\n                                                <img [src]=\"this.customer.picture\" class=\"rounded\" style=\"width: 100%;\">\r\n                                            </div>\r\n                                            <div class=\"col-sm-4\">\r\n                                                <label class=\"btn btn-primary pull-right\" [hidden]=\"customer.isLocked\">\r\n                                                    <input type=\"file\" (change)=\"btnUploadPictureClick($event)\"\r\n                                                        name=\"btnUploadPicture\" accept=\"image/*\" style=\"display:none;\">\r\n                                                    Upload\r\n                                                </label>\r\n                                            </div>\r\n                                        </div>\r\n                                    </div>\r\n                                </div>\r\n                                <div class=\"form-group row\">\r\n                                    <label class=\"col-sm-4 col-form-label text-right\">Civil Status</label>\r\n                                    <div class=\"col-sm-8\">\r\n                                        <wj-combo-box #cmbCivilStatus [itemsSource]=\"cmbCivilStatusData\"\r\n                                            [isEditable]=\"false\" [isRequired]=\"true\" [displayMemberPath]=\"'value'\"\r\n                                            [selectedValuePath]=\"'value'\" [isDisabled]=\"customer.isLocked\"\r\n                                            [(ngModel)]=\"customer.civilStatus\">\r\n                                        </wj-combo-box>\r\n                                    </div>\r\n                                </div>\r\n                                <div class=\"form-group row\">\r\n                                    <label class=\"col-sm-4 col-form-label text-right\">Gender</label>\r\n                                    <div class=\"col-sm-8\">\r\n                                        <wj-combo-box #cmbGender [itemsSource]=\"cmbGenderData\" [isEditable]=\"false\"\r\n                                            [isRequired]=\"true\" [displayMemberPath]=\"'value'\"\r\n                                            [selectedValuePath]=\"'value'\" [isDisabled]=\"customer.isLocked\"\r\n                                            [(ngModel)]=\"customer.gender\">\r\n                                        </wj-combo-box>\r\n                                    </div>\r\n                                </div>\r\n                                <div class=\"form-group row\">\r\n                                    <label class=\"col-sm-4 col-form-label text-right\">Birth Date</label>\r\n                                    <div class=\"col-sm-8\">\r\n                                        <wj-input-date #calBirthDate [(text)]=\"customer.birthDate\"\r\n                                            [isDisabled]=\"customer.isLocked\" format=\"M/d/yyyy\">\r\n                                        </wj-input-date>\r\n                                    </div>\r\n                                </div>\r\n                                <div class=\"form-group row\">\r\n                                    <label class=\"col-sm-4 col-form-label text-right\">TIN</label>\r\n                                    <div class=\"col-sm-8\">\r\n                                        <input [(ngModel)]=\"customer.tin\" [disabled]=\"customer.isLocked\" type=\"text\"\r\n                                            class=\"form-control\">\r\n                                    </div>\r\n                                </div>\r\n                                <div class=\"form-group row\">\r\n                                    <label class=\"col-sm-4 col-form-label text-right\">Spouse Last Name</label>\r\n                                    <div class=\"col-sm-8\">\r\n                                        <input [(ngModel)]=\"customer.spouseLastName\" [disabled]=\"customer.isLocked\"\r\n                                            type=\"text\" class=\"form-control\">\r\n                                    </div>\r\n                                </div>\r\n                                <div class=\"form-group row\">\r\n                                    <label class=\"col-sm-4 col-form-label text-right\">Spouse First Name</label>\r\n                                    <div class=\"col-sm-8\">\r\n                                        <input [(ngModel)]=\"customer.spouseFirstName\" [disabled]=\"customer.isLocked\"\r\n                                            type=\"text\" class=\"form-control\">\r\n                                    </div>\r\n                                </div>\r\n                                <div class=\"form-group row\">\r\n                                    <label class=\"col-sm-4 col-form-label text-right\">Spouse Middle Name</label>\r\n                                    <div class=\"col-sm-8\">\r\n                                        <input [(ngModel)]=\"customer.spouseMiddleName\" [disabled]=\"customer.isLocked\"\r\n                                            type=\"text\" class=\"form-control\">\r\n                                    </div>\r\n                                </div>\r\n                                <div class=\"form-group row\">\r\n                                    <label class=\"col-sm-4 col-form-label text-right\">Spouse Birth Date</label>\r\n                                    <div class=\"col-sm-8\">\r\n                                        <wj-input-date #calBirthDate [(text)]=\"customer.spouseBirthDate\"\r\n                                            [isDisabled]=\"customer.isLocked\" format=\"M/d/yyyy\">\r\n                                        </wj-input-date>\r\n                                    </div>\r\n                                </div>\r\n                                <div class=\"form-group row\">\r\n                                    <label class=\"col-sm-4 col-form-label text-right\">Spouse Citizen</label>\r\n                                    <div class=\"col-sm-8\">\r\n                                        <input [(ngModel)]=\"customer.spouseCitizen\" [disabled]=\"customer.isLocked\"\r\n                                            type=\"text\" class=\"form-control\">\r\n                                    </div>\r\n                                </div>\r\n                                <div class=\"form-group row\">\r\n                                    <label class=\"col-sm-4 col-form-label text-right\">Spouse Employer</label>\r\n                                    <div class=\"col-sm-8\">\r\n                                        <input [(ngModel)]=\"customer.spouseEmployer\" [disabled]=\"customer.isLocked\"\r\n                                            type=\"text\" class=\"form-control\">\r\n                                    </div>\r\n                                </div>\r\n                                <div class=\"form-group row\">\r\n                                    <label class=\"col-sm-4 col-form-label text-right\">Spouse TIN</label>\r\n                                    <div class=\"col-sm-8\">\r\n                                        <input [(ngModel)]=\"customer.spouseTIN\" [disabled]=\"customer.isLocked\"\r\n                                            type=\"text\" class=\"form-control\">\r\n                                    </div>\r\n                                </div>\r\n                            </div>\r\n                            <!-- <div customer info column 2> -->\r\n                        </div>\r\n                    </div>\r\n                    <!-- <div tabpanel:customer info> -->\r\n                    <div [ngClass]=\"{'active': tabDetail1[1], 'tab-pane': true }\" role=\"tabpanel\">\r\n                        <div class=\"row\">\r\n                            <div class=\"col-md-6\">\r\n                                <div class=\"form-group row\">\r\n                                    <label class=\"col-sm-4 col-form-label text-right\">ID Type</label>\r\n                                    <div class=\"col-sm-8\">\r\n                                        <wj-combo-box #cmbIDType [itemsSource]=\"cmbIDTypeData\" [isEditable]=\"false\"\r\n                                            [isRequired]=\"true\" [displayMemberPath]=\"'value'\"\r\n                                            [selectedValuePath]=\"'value'\" [isDisabled]=\"customer.isLocked\"\r\n                                            [(ngModel)]=\"customer.idType\">\r\n                                        </wj-combo-box>\r\n                                    </div>\r\n                                </div>\r\n                                <div class=\"form-group row\">\r\n                                    <label class=\"col-sm-4 col-form-label text-right\">ID Number</label>\r\n                                    <div class=\"col-sm-8\">\r\n                                        <input [(ngModel)]=\"customer.idNumber\" [disabled]=\"customer.isLocked\"\r\n                                            type=\"text\" class=\"form-control\">\r\n                                    </div>\r\n                                </div>\r\n                                <div class=\"form-group row\">\r\n                                    <label class=\"col-sm-4 col-form-label text-right\">Employer</label>\r\n                                    <div class=\"col-sm-8\">\r\n                                        <input [(ngModel)]=\"customer.employer\" [disabled]=\"customer.isLocked\"\r\n                                            type=\"text\" class=\"form-control\">\r\n                                    </div>\r\n                                </div>\r\n                                <div class=\"form-group row\">\r\n                                    <label class=\"col-sm-4 col-form-label text-right\">Employer Industry</label>\r\n                                    <div class=\"col-sm-8\">\r\n                                        <input [(ngModel)]=\"customer.employerIndustry\" [disabled]=\"customer.isLocked\"\r\n                                            type=\"text\" class=\"form-control\">\r\n                                    </div>\r\n                                </div>\r\n                                <div class=\"form-group row\">\r\n                                    <label class=\"col-sm-4 col-form-label text-right\">No. of Years Employed</label>\r\n                                    <div class=\"col-sm-8\">\r\n                                        <input [(ngModel)]=\"customer.noOfYearsEmployed\" [disabled]=\"customer.isLocked\"\r\n                                            type=\"text\" class=\"form-control\">\r\n                                    </div>\r\n                                </div>\r\n                                <div class=\"form-group row\">\r\n                                    <label class=\"col-sm-4 col-form-label text-right\">Position</label>\r\n                                    <div class=\"col-sm-8\">\r\n                                        <input [(ngModel)]=\"customer.position\" [disabled]=\"customer.isLocked\"\r\n                                            type=\"text\" class=\"form-control\">\r\n                                    </div>\r\n                                </div>\r\n                                <div class=\"form-group row\">\r\n                                    <label class=\"col-sm-4 col-form-label text-right\">Employment Status</label>\r\n                                    <div class=\"col-sm-8\">\r\n                                        <wj-combo-box #cmbEmploymentStatus [itemsSource]=\"cmbEmploymentStatusData\"\r\n                                            [(ngModel)]=\"customer.employmentStatus\" [isEditable]=\"false\"\r\n                                            [isRequired]=\"true\" [displayMemberPath]=\"'value'\"\r\n                                            [selectedValuePath]=\"'value'\" [isDisabled]=\"customer.isLocked\">\r\n                                        </wj-combo-box>\r\n                                    </div>\r\n                                </div>\r\n                                <div class=\"form-group row\">\r\n                                    <label class=\"col-sm-4 col-form-label text-right\">Street Address</label>\r\n                                    <div class=\"col-sm-8\">\r\n                                        <textarea [disabled]=\"customer.isLocked\" [(ngModel)]=\"customer.employerAddress\"\r\n                                            rows=\"4\" class=\"form-control\">\r\n                                        </textarea>\r\n                                    </div>\r\n                                </div>\r\n                            </div>\r\n                            <!-- <div employment info column 1> -->\r\n                            <div class=\"col-md-6\">\r\n                                <div class=\"form-group row\">\r\n                                    <label class=\"col-sm-4 col-form-label text-right\">City</label>\r\n                                    <div class=\"col-sm-8\">\r\n                                        <input [(ngModel)]=\"customer.employerCity\" [disabled]=\"customer.isLocked\"\r\n                                            type=\"text\" class=\"form-control\">\r\n                                    </div>\r\n                                </div>\r\n                                <div class=\"form-group row\">\r\n                                    <label class=\"col-sm-4 col-form-label text-right\">Province</label>\r\n                                    <div class=\"col-sm-8\">\r\n                                        <input [(ngModel)]=\"customer.employerProvince\" [disabled]=\"customer.isLocked\"\r\n                                            type=\"text\" class=\"form-control\">\r\n                                    </div>\r\n                                </div>\r\n                                <div class=\"form-group row\">\r\n                                    <label class=\"col-sm-4 col-form-label text-right\">Country</label>\r\n                                    <div class=\"col-sm-8\">\r\n                                        <input [(ngModel)]=\"customer.employerCountry\" [disabled]=\"customer.isLocked\"\r\n                                            type=\"text\" class=\"form-control\">\r\n                                    </div>\r\n                                </div>\r\n                                <div class=\"form-group row\">\r\n                                    <label class=\"col-sm-4 col-form-label text-right\">Zip Code</label>\r\n                                    <div class=\"col-sm-8\">\r\n                                        <input [(ngModel)]=\"customer.employerZipCode\" [disabled]=\"customer.isLocked\"\r\n                                            type=\"text\" class=\"form-control\">\r\n                                    </div>\r\n                                </div>\r\n                                <div class=\"form-group row\">\r\n                                    <label class=\"col-sm-4 col-form-label text-right\">Telephone No.</label>\r\n                                    <div class=\"col-sm-8\">\r\n                                        <input [(ngModel)]=\"customer.employerTelephoneNumber\"\r\n                                            [disabled]=\"customer.isLocked\" type=\"text\" class=\"form-control\">\r\n                                    </div>\r\n                                </div>\r\n                                <div class=\"form-group row\">\r\n                                    <label class=\"col-sm-4 col-form-label text-right\">Mobile No.</label>\r\n                                    <div class=\"col-sm-8\">\r\n                                        <input [(ngModel)]=\"customer.employerMobileNumber\"\r\n                                            [disabled]=\"customer.isLocked\" type=\"text\" class=\"form-control\">\r\n                                    </div>\r\n                                </div>\r\n                            </div>\r\n                            <!-- <div employment info column 2> -->\r\n                        </div>\r\n                    </div>\r\n                    <!-- <div tabpanel:employment info> -->\r\n                </div>\r\n                <!-- <div class=\"tab-content\"> -->\r\n            </div>\r\n            <!-- <div class=\"card-body\"> -->\r\n\r\n        </div>\r\n        <!-- <div class=\"card\"> -->\r\n\r\n    </div>\r\n    <!-- <div class=\"container-fluid\"> -->\r\n\r\n    <app-footer [data]=\"customer\"></app-footer>\r\n\r\n</div>\r\n<!-- <div class=\"content-wrapper\"> -->\r\n\r\n<!-- delete customer modal -->\r\n<div id=\"mdlSoldUnit\" class=\"modal fade\" role=\"dialog\"\r\n    [ngStyle]=\"{'display': mdlSoldUnitShow ? 'block' : 'none', 'opacity': 1}\">\r\n    <div class=\"modal-dialog modal-lg\">\r\n        <div class=\"modal-content\">\r\n            <div class=\"modal-header\">\r\n                <h4 class=\"modal-title\">Sold Unit</h4>\r\n            </div>\r\n            <div class=\"modal-body\">\r\n                <wj-flex-grid #fgdSoldUnit [itemsSource]=\"listSoldUnitCollectionView\" [selectionMode]=\"3\"\r\n                    [frozenColumns]=\"1\">\r\n                    <wj-flex-grid-filter></wj-flex-grid-filter>\r\n                    <wj-flex-grid-column *ngIf=\"canEdit\" [header]=\"Edit\" [isReadOnly]=\"true\" [isContentHtml]=\"true\"\r\n                        [width]=\"90\">\r\n                        <ng-template wjFlexGridCellTemplate [cellType]=\"'Cell'\" let-cell=\"cell\">\r\n                            <button class=\"btn btn-primary btn-xs btn-block\" (click)=\"printPDF()\"\r\n                                id=\"btnPrintSoldUnit\">\r\n                                <i class=\"fa fa-edit fa-fw\"></i> Print\r\n                            </button>\r\n                        </ng-template>\r\n                    </wj-flex-grid-column>\r\n                    <wj-flex-grid-column [header]=\"'Number'\" [binding]=\"'soldUnitNumber'\" [isReadOnly]=\"true\"\r\n                        [width]=\"120\"></wj-flex-grid-column>\r\n                    <wj-flex-grid-column [header]=\"'Date'\" [binding]=\"'soldUnitDate'\" [isReadOnly]=\"true\" [width]=\"100\">\r\n                    </wj-flex-grid-column>\r\n                    <wj-flex-grid-column [header]=\"'Project'\" [binding]=\"'project'\" [isReadOnly]=\"true\" [width]=\"'*'\">\r\n                    </wj-flex-grid-column>\r\n                    <wj-flex-grid-column [header]=\"'Unit'\" [binding]=\"'unit'\" [isReadOnly]=\"true\" [width]=\"100\">\r\n                    </wj-flex-grid-column>\r\n                    <wj-flex-grid-column [header]=\"'Customer'\" [binding]=\"'customer'\" [isReadOnly]=\"true\" [width]=\"'*'\">\r\n                    </wj-flex-grid-column>\r\n                    <wj-flex-grid-column [header]=\"'Broker'\" [binding]=\"'broker'\" [isReadOnly]=\"true\" [width]=\"'*'\">\r\n                    </wj-flex-grid-column>\r\n                    <wj-flex-grid-column [header]=\"'TCP Discount'\" [binding]=\"'tcpdiscount'\" [isReadOnly]=\"true\"\r\n                        [width]=\"150\"></wj-flex-grid-column>\r\n                    <wj-flex-grid-column [header]=\"'Price'\" [binding]=\"'price'\" [isReadOnly]=\"true\" [width]=\"150\">\r\n                    </wj-flex-grid-column>\r\n                    <wj-flex-grid-column [header]=\"'L'\" [binding]=\"'isLocked'\" [isReadOnly]=\"true\" [width]=\"50\">\r\n                    </wj-flex-grid-column>\r\n                    <wj-flex-grid-column [header]=\"'Status'\" [binding]=\"'status'\" [isReadOnly]=\"true\" [width]=\"100\">\r\n                    </wj-flex-grid-column>\r\n                </wj-flex-grid>\r\n            </div>\r\n            <div class=\"modal-footer\">\r\n                <div class=\"row\">\r\n                    <div class=\"col-sm-8\">\r\n                        <div class=\"col-sm-12 btn-group\" style=\"margin-right: 300px;\">\r\n                            <button type=\"button\" class=\"btn btn-secondary\"\r\n                                (click)=\"listSoldUnitCollectionView.moveToFirstPage()\">\r\n                                <i class=\"fa fa-fast-backward\"></i> First\r\n                            </button>\r\n                            <button type=\"button\" class=\"btn btn-secondary\"\r\n                                (click)=\"listSoldUnitCollectionView.moveToPreviousPage()\">\r\n                                <i class=\"fa fa-step-backward\"></i> Previous\r\n                            </button>\r\n                            <button type=\"button\" class=\"btn btn-secondary\" disabled style=\"width:100px\">\r\n                                {{ listSoldUnitCollectionView.pageIndex + 1 }} /\r\n                                {{ listSoldUnitCollectionView.pageCount }}\r\n                            </button>\r\n                            <button type=\"button\" class=\"btn btn-secondary\"\r\n                                (click)=\"listSoldUnitCollectionView.moveToNextPage()\">\r\n                                Next\r\n                                <i class=\"fa fa-step-forward\"></i>\r\n                            </button>\r\n                            <button type=\"button\" class=\"btn btn-secondary\"\r\n                                (click)=\"listSoldUnitCollectionView.moveToLastPage()\">\r\n                                Last\r\n                                <i class=\"fa fa-fast-forward\"></i>\r\n                            </button>\r\n                        </div>\r\n                    </div>\r\n                    <div class=\"col-sm-4\">\r\n                        <button id=\"btnCloseSoldUnitModalModal\" class=\"btn btn-danger\" style=\"float: right;\"\r\n                            (click)=\"btnCloseSoldUnitModalClick()\">\r\n                            <i class=\"fa fa-close fa-fw\"></i> Close\r\n                        </button>\r\n                    </div>\r\n                </div>\r\n            </div>\r\n        </div>\r\n    </div>\r\n</div>"
 
 /***/ }),
 
@@ -4868,6 +4868,9 @@ var CustomerDetail = (function () {
         };
         // tab index (for large number of fields)
         this.tabDetail1 = new Array(true, false);
+        this.listSoldUnitObservableArray = new __WEBPACK_IMPORTED_MODULE_3_wijmo_wijmo__["ObservableArray"]();
+        this.listSoldUnitCollectionView = new __WEBPACK_IMPORTED_MODULE_3_wijmo_wijmo__["CollectionView"](this.listSoldUnitObservableArray);
+        this.printPreference = "Print";
         this.toastr.setRootViewContainerRef(viewContainer);
     }
     CustomerDetail.prototype.getUserRights = function () {
@@ -5144,14 +5147,55 @@ var CustomerDetail = (function () {
     CustomerDetail.prototype.txtLastNameKeyup = function () {
         this.customer.fullName = this.customer.lastName + ", " + this.customer.firstName + " " + this.customer.middleName;
     };
+    CustomerDetail.prototype.btnSoldUnitModal = function () {
+        var _this = this;
+        this.getSoldUnits();
+        setTimeout(function () {
+            _this.mdlSoldUnitShow = true;
+        }, 300);
+    };
+    CustomerDetail.prototype.btnCloseSoldUnitModalClick = function () {
+        this.mdlSoldUnitShow = false;
+    };
+    CustomerDetail.prototype.getSoldUnits = function () {
+        var _this = this;
+        var soldUnits = new __WEBPACK_IMPORTED_MODULE_3_wijmo_wijmo__["ObservableArray"]();
+        this.customerService.getSoldUnitsList(this.customer.id);
+        this.soldUnitsSub = this.customerService.soldUnitsObservable.subscribe(function (data) {
+            if (data.length > 0) {
+                _this.listSoldUnitObservableArray = data;
+                console.log(data);
+                _this.listSoldUnitCollectionView = new __WEBPACK_IMPORTED_MODULE_3_wijmo_wijmo__["CollectionView"](_this.listSoldUnitObservableArray);
+                _this.listSoldUnitCollectionView.pageSize = 15;
+                _this.listSoldUnitCollectionView.trackChanges = true;
+            }
+            if (_this.soldUnitsSub != null)
+                _this.soldUnitsSub.unsubscribe();
+        });
+    };
     CustomerDetail.prototype.btnPrintReservationAgreementClick = function () {
-        this.router.navigate(['/pdf', 'reservationagreement', this.customer.id]);
+        this.printPreference = "ReservationAgreement";
+        this.btnSoldUnitModal();
     };
     CustomerDetail.prototype.btnPrintBuyersUndertakingClick = function () {
-        this.router.navigate(['/pdf', 'buyersundertaking', this.customer.id]);
+        this.printPreference = "PrintBuyersUndertaking";
+        this.btnSoldUnitModal();
     };
     CustomerDetail.prototype.btnPrintComputationSheetClick = function () {
-        this.router.navigate(['/pdf', 'computationsheet', this.customer.id]);
+        this.printPreference = "ComputationSheet";
+        this.btnSoldUnitModal();
+    };
+    CustomerDetail.prototype.printPDF = function () {
+        var selectedSoldUnit = this.listSoldUnitCollectionView.currentItem;
+        if (this.printPreference == "ReservationAgreement") {
+            this.router.navigate(['/pdf', 'reservationagreement', selectedSoldUnit.id]);
+        }
+        if (this.printPreference == "PrintBuyersUndertaking") {
+            this.router.navigate(['/pdf', 'buyersundertaking', selectedSoldUnit.id]);
+        }
+        if (this.printPreference == "ComputationSheet") {
+            this.router.navigate(['/pdf', 'computationsheet', selectedSoldUnit.id]);
+        }
     };
     CustomerDetail = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
@@ -5524,6 +5568,9 @@ var CustomerService = (function () {
         // combo boxes
         this.dropDownsSource = new __WEBPACK_IMPORTED_MODULE_5_rxjs_Subject__["Subject"]();
         this.dropDownsObservable = this.dropDownsSource.asObservable();
+        // list (sold units)
+        this.soldUnitsSource = new __WEBPACK_IMPORTED_MODULE_5_rxjs_Subject__["Subject"]();
+        this.soldUnitsObservable = this.soldUnitsSource.asObservable();
     }
     // ==============
     // public methods
@@ -5531,7 +5578,7 @@ var CustomerService = (function () {
     // customer list
     CustomerService.prototype.getCustomers = function () {
         var _this = this;
-        var url = "http://filbrokerwebsite-greentech-api.azurewebsites.net/api/MstCustomer/List";
+        var url = "https://filbrokerwebsite-greentech-api.azurewebsites.net/api/MstCustomer/List";
         var customers = new __WEBPACK_IMPORTED_MODULE_4_wijmo_wijmo__["ObservableArray"]();
         this.http.get(url, this.options).subscribe(function (response) {
             var results = new __WEBPACK_IMPORTED_MODULE_4_wijmo_wijmo__["ObservableArray"](response.json());
@@ -5599,7 +5646,7 @@ var CustomerService = (function () {
     // customer list operations
     CustomerService.prototype.addCustomer = function (customer, btnAddCustomer) {
         var _this = this;
-        var url = "http://filbrokerwebsite-greentech-api.azurewebsites.net/api/MstCustomer/Add";
+        var url = "https://filbrokerwebsite-greentech-api.azurewebsites.net/api/MstCustomer/Add";
         this.http.post(url, JSON.stringify(customer), this.options).subscribe(function (response) {
             var id = response.json();
             if (id > 0) {
@@ -5621,7 +5668,7 @@ var CustomerService = (function () {
     };
     CustomerService.prototype.deleteCustomer = function (id) {
         var _this = this;
-        var url = "http://filbrokerwebsite-greentech-api.azurewebsites.net/api/MstCustomer/Delete/" + id;
+        var url = "https://filbrokerwebsite-greentech-api.azurewebsites.net/api/MstCustomer/Delete/" + id;
         this.http.delete(url, this.options).subscribe(function (response) {
             _this.customerDeletedSource.next(1);
         }, function (error) {
@@ -5632,7 +5679,7 @@ var CustomerService = (function () {
     CustomerService.prototype.getCustomer = function (id) {
         var _this = this;
         var customer;
-        var url = "http://filbrokerwebsite-greentech-api.azurewebsites.net/api/MstCustomer/Detail/" + id;
+        var url = "https://filbrokerwebsite-greentech-api.azurewebsites.net/api/MstCustomer/Detail/" + id;
         this.http.get(url, this.options).subscribe(function (response) {
             var result = response.json();
             if (result != null) {
@@ -5699,7 +5746,7 @@ var CustomerService = (function () {
     // customer detail operations
     CustomerService.prototype.saveCustomer = function (project) {
         var _this = this;
-        var url = "http://filbrokerwebsite-greentech-api.azurewebsites.net/api/MstCustomer/Save";
+        var url = "https://filbrokerwebsite-greentech-api.azurewebsites.net/api/MstCustomer/Save";
         this.http.put(url, JSON.stringify(project), this.options).subscribe(function (response) {
             _this.customerSavedSource.next(1);
         }, function (error) {
@@ -5708,7 +5755,7 @@ var CustomerService = (function () {
     };
     CustomerService.prototype.lockCustomer = function (project) {
         var _this = this;
-        var url = "http://filbrokerwebsite-greentech-api.azurewebsites.net/api/MstCustomer/Lock";
+        var url = "https://filbrokerwebsite-greentech-api.azurewebsites.net/api/MstCustomer/Lock";
         this.http.put(url, JSON.stringify(project), this.options).subscribe(function (response) {
             _this.customerLockedSource.next(1);
         }, function (error) {
@@ -5717,7 +5764,7 @@ var CustomerService = (function () {
     };
     CustomerService.prototype.unlockCustomer = function (project) {
         var _this = this;
-        var url = "http://filbrokerwebsite-greentech-api.azurewebsites.net/api/MstCustomer/Unlock";
+        var url = "https://filbrokerwebsite-greentech-api.azurewebsites.net/api/MstCustomer/Unlock";
         this.http.put(url, JSON.stringify(project), this.options).subscribe(function (response) {
             _this.customerUnlockedSource.next(1);
         }, function (error) {
@@ -5726,7 +5773,7 @@ var CustomerService = (function () {
     };
     CustomerService.prototype.uploadCustomerPicture = function (file, fileName) {
         var _this = this;
-        var url = "http://filbrokerwebsite-greentech-api.azurewebsites.net/api/Blob/Upload";
+        var url = "https://filbrokerwebsite-greentech-api.azurewebsites.net/api/Blob/Upload";
         var blob;
         var formData = new FormData();
         formData.append("image", file, fileName);
@@ -5757,7 +5804,7 @@ var CustomerService = (function () {
     CustomerService.prototype.getDropDowns = function () {
         var _this = this;
         var dropDowns = new __WEBPACK_IMPORTED_MODULE_4_wijmo_wijmo__["ObservableArray"]();
-        var url = "http://filbrokerwebsite-greentech-api.azurewebsites.net/api/SysDropDown/List";
+        var url = "https://filbrokerwebsite-greentech-api.azurewebsites.net/api/SysDropDown/List";
         this.http.get(url, this.options).subscribe(function (response) {
             var results = new __WEBPACK_IMPORTED_MODULE_4_wijmo_wijmo__["ObservableArray"](response.json());
             if (results.length > 0) {
@@ -5773,6 +5820,78 @@ var CustomerService = (function () {
             }
             else {
                 _this.toastr.error("No data.");
+            }
+        });
+    };
+    // list
+    CustomerService.prototype.getSoldUnitsList = function (id) {
+        var _this = this;
+        // let url = "https://filbrokerwebsite-greentech-api.azurewebsites.net/api/TrnSoldUnit/ListPerDates/" + dateStart + "/" + dateEnd;
+        var url = "https://filbrokerwebsite-greentech-api.azurewebsites.net/api/MstCustomer/list/soldunit/" + id;
+        var soldUnits = new __WEBPACK_IMPORTED_MODULE_4_wijmo_wijmo__["ObservableArray"]();
+        this.http.get(url, this.options).subscribe(function (response) {
+            var results = new __WEBPACK_IMPORTED_MODULE_4_wijmo_wijmo__["ObservableArray"](response.json());
+            if (results.length > 0) {
+                for (var i = 0; i <= results.length - 1; i++) {
+                    soldUnits.push({
+                        id: results[i].Id,
+                        soldUnitNumber: results[i].SoldUnitNumber,
+                        soldUnitDate: results[i].SoldUnitDate,
+                        projectId: results[i].ProjectId,
+                        project: results[i].Project,
+                        unitId: results[i].UnitId,
+                        unit: results[i].Unit,
+                        customerId: results[i].CustomerId,
+                        customer: results[i].Customer,
+                        brokerId: results[i].BrokerId,
+                        broker: results[i].Broker,
+                        agent: results[i].Agent,
+                        brokerCoordinator: results[i].BrokerCoordinator,
+                        checklistId: results[i].ChecklistId,
+                        checklist: results[i].Checklist,
+                        price: results[i].Price,
+                        tcpdiscount: results[i].PriceDiscount,
+                        equityValue: results[i].EquityValue,
+                        equityPercent: results[i].EquityPercent,
+                        equitySpotPayment1: results[i].equitySpotPayment1,
+                        equitySpotPayment2: results[i].equitySpotPayment2,
+                        equitySpotPayment3: results[i].equitySpotPayment3,
+                        discount: results[i].Discount,
+                        discountedEquity: results[i].DiscountedEquity,
+                        reservation: results[i].Reservation,
+                        netEquity: results[i].NetEquity,
+                        netEquityBalance: results[i].NetEquityBalance,
+                        netEquityInterest: results[i].NetEquityInterest,
+                        netEquityNoOfPayments: results[i].NetEquityNoOfPayments,
+                        netEquityAmortization: results[i].NetEquityAmortization,
+                        balance: results[i].Balance,
+                        balanceInterest: results[i].BalanceInterest,
+                        balanceNoOfPayments: results[i].BalanceNoOfPayments,
+                        balanceAmortization: results[i].BalanceAmortization,
+                        totalInvestment: results[i].TotalInvestment,
+                        paymentOptions: results[i].PaymentOptions,
+                        financing: results[i].Financing,
+                        remarks: results[i].Remarks,
+                        financingType: results[i].FinancingType,
+                        preparedBy: results[i].PreparedBy,
+                        preparedByUser: results[i].PreparedByUser,
+                        checkedBy: results[i].CheckedBy,
+                        checkedByUser: results[i].CheckedByUser,
+                        approvedBy: results[i].ApprovedBy,
+                        approvedByUser: results[i].ApprovedByUser,
+                        status: results[i].Status,
+                        isLocked: results[i].IsLocked,
+                        createdBy: results[i].CreatedBy,
+                        createdDateTime: results[i].CreatedDateTime,
+                        updatedBy: results[i].UpdatedBy,
+                        updatedDateTime: results[i].UpdatedDateTime
+                    });
+                }
+                _this.soldUnitsSource.next(soldUnits);
+            }
+            else {
+                _this.soldUnitsSource.next(soldUnits);
+                _this.toastr.error("No sold units for this date range.");
             }
         });
     };
@@ -5962,7 +6081,7 @@ var FooterService = (function () {
     }
     FooterService.prototype.getUsers = function () {
         var _this = this;
-        var url = "http://filbrokerwebsite-greentech-api.azurewebsites.net/api/MstUser/List";
+        var url = "https://filbrokerwebsite-greentech-api.azurewebsites.net/api/MstUser/List";
         var users = new __WEBPACK_IMPORTED_MODULE_3_wijmo_wijmo__["ObservableArray"]();
         this.http.get(url, this.options).subscribe(function (response) {
             var results = new __WEBPACK_IMPORTED_MODULE_3_wijmo_wijmo__["ObservableArray"](response.json());
@@ -6542,8 +6661,8 @@ var PDFService = (function () {
     // ==============
     PDFService.prototype.getPDFCustomer = function (id) {
         var _this = this;
-        // let url = "http://filbrokerwebsite-greentech-api.azurewebsites.net/api/PDF/Customer/" + id;
-        var url = "http://filbrokerwebsite-greentech-api.azurewebsites.net/api/PDF/Customer/" + id;
+        // let url = "https://filbrokerwebsite-greentech-api.azurewebsites.net/api/PDF/Customer/" + id;
+        var url = "https://filbrokerwebsite-greentech-api.azurewebsites.net/api/PDF/Customer/" + id;
         console.log(url);
         this.http.get(url, { responseType: __WEBPACK_IMPORTED_MODULE_1__angular_http__["e" /* ResponseContentType */].Blob }).subscribe(function (response) {
             var pdf = new Blob([response.blob()], { type: 'application/pdf' });
@@ -6552,8 +6671,8 @@ var PDFService = (function () {
     };
     PDFService.prototype.getPDFBroker = function (id) {
         var _this = this;
-        // let url = "http://filbrokerwebsite-greentech-api.azurewebsites.net/api/PDF/Broker/" + id;
-        var url = "http://filbrokerwebsite-greentech-api.azurewebsites.net/api/PDF/Broker/" + id;
+        // let url = "https://filbrokerwebsite-greentech-api.azurewebsites.net/api/PDF/Broker/" + id;
+        var url = "https://filbrokerwebsite-greentech-api.azurewebsites.net/api/PDF/Broker/" + id;
         console.log(url);
         this.http.get(url, { responseType: __WEBPACK_IMPORTED_MODULE_1__angular_http__["e" /* ResponseContentType */].Blob }).subscribe(function (response) {
             var pdf = new Blob([response.blob()], { type: 'application/pdf' });
@@ -6562,8 +6681,8 @@ var PDFService = (function () {
     };
     PDFService.prototype.getPDFChecklist = function (id) {
         var _this = this;
-        // let url = "http://filbrokerwebsite-greentech-api.azurewebsites.net/api/PDF/Checklist/" + id;
-        var url = "http://filbrokerwebsite-greentech-api.azurewebsites.net/api/PDF/Checklist/" + id;
+        // let url = "https://filbrokerwebsite-greentech-api.azurewebsites.net/api/PDF/Checklist/" + id;
+        var url = "https://filbrokerwebsite-greentech-api.azurewebsites.net/api/PDF/Checklist/" + id;
         this.http.get(url, { responseType: __WEBPACK_IMPORTED_MODULE_1__angular_http__["e" /* ResponseContentType */].Blob }).subscribe(function (response) {
             var pdf = new Blob([response.blob()], { type: 'application/pdf' });
             _this.pdfChecklistSource.next(pdf);
@@ -6571,8 +6690,8 @@ var PDFService = (function () {
     };
     PDFService.prototype.getPDFSoldUnitProposal = function (id) {
         var _this = this;
-        // let url = "http://filbrokerwebsite-greentech-api.azurewebsites.net/api/PDF/SoldUnitProposal/" + id;
-        var url = "http://filbrokerwebsite-greentech-api.azurewebsites.net/api/PDF/SoldUnitProposal/" + id;
+        // let url = "https://filbrokerwebsite-greentech-api.azurewebsites.net/api/PDF/SoldUnitProposal/" + id;
+        var url = "https://filbrokerwebsite-greentech-api.azurewebsites.net/api/PDF/SoldUnitProposal/" + id;
         this.http.get(url, { responseType: __WEBPACK_IMPORTED_MODULE_1__angular_http__["e" /* ResponseContentType */].Blob }).subscribe(function (response) {
             var pdf = new Blob([response.blob()], { type: 'application/pdf' });
             _this.pdfSoldUnitProposalSource.next(pdf);
@@ -6580,8 +6699,8 @@ var PDFService = (function () {
     };
     PDFService.prototype.getPDFSoldUnitContract = function (id) {
         var _this = this;
-        // let url = "http://filbrokerwebsite-greentech-api.azurewebsites.net/api/PDF/SoldUnitContract/" + id;
-        var url = "http://filbrokerwebsite-greentech-api.azurewebsites.net/api/PDF/SoldUnitContract/" + id;
+        // let url = "https://filbrokerwebsite-greentech-api.azurewebsites.net/api/PDF/SoldUnitContract/" + id;
+        var url = "https://filbrokerwebsite-greentech-api.azurewebsites.net/api/PDF/SoldUnitContract/" + id;
         this.http.get(url, { responseType: __WEBPACK_IMPORTED_MODULE_1__angular_http__["e" /* ResponseContentType */].Blob }).subscribe(function (response) {
             var pdf = new Blob([response.blob()], { type: 'application/pdf' });
             _this.pdfSoldUnitContractSource.next(pdf);
@@ -6589,8 +6708,8 @@ var PDFService = (function () {
     };
     PDFService.prototype.getPDFSoldUnitEquitySchedule = function (id) {
         var _this = this;
-        // let url = "http://filbrokerwebsite-greentech-api.azurewebsites.net/api/PDF/SoldUnitEquitySchedule/" + id;
-        var url = "http://filbrokerwebsite-greentech-api.azurewebsites.net/api/PDF/SoldUnitEquitySchedule/" + id;
+        // let url = "https://filbrokerwebsite-greentech-api.azurewebsites.net/api/PDF/SoldUnitEquitySchedule/" + id;
+        var url = "https://filbrokerwebsite-greentech-api.azurewebsites.net/api/PDF/SoldUnitEquitySchedule/" + id;
         this.http.get(url, { responseType: __WEBPACK_IMPORTED_MODULE_1__angular_http__["e" /* ResponseContentType */].Blob }).subscribe(function (response) {
             var pdf = new Blob([response.blob()], { type: 'application/pdf' });
             _this.pdfSoldUnitEquityScheduleSource.next(pdf);
@@ -6598,7 +6717,7 @@ var PDFService = (function () {
     };
     PDFService.prototype.getPDFSoldUnitReservationAgreement = function (id) {
         var _this = this;
-        var url = "http://filbrokerwebsite-greentech-api.azurewebsites.net/api/PDF/ReservationAgreement/" + id;
+        var url = "https://filbrokerwebsite-greentech-api.azurewebsites.net/api/PDF/ReservationAgreement/" + id;
         this.http.get(url, { responseType: __WEBPACK_IMPORTED_MODULE_1__angular_http__["e" /* ResponseContentType */].Blob }).subscribe(function (response) {
             var pdf = new Blob([response.blob()], { type: 'application/pdf' });
             _this.pdfSoldUnitReservationAgreementSource.next(pdf);
@@ -6606,7 +6725,7 @@ var PDFService = (function () {
     };
     PDFService.prototype.getPDFSoldUnitBuyersUndertaking = function (id) {
         var _this = this;
-        var url = "http://filbrokerwebsite-greentech-api.azurewebsites.net/api/PDF/BuyersUndertaking/" + id;
+        var url = "https://filbrokerwebsite-greentech-api.azurewebsites.net/api/PDF/BuyersUndertaking/" + id;
         this.http.get(url, { responseType: __WEBPACK_IMPORTED_MODULE_1__angular_http__["e" /* ResponseContentType */].Blob }).subscribe(function (response) {
             var pdf = new Blob([response.blob()], { type: 'application/pdf' });
             _this.pdfSoldUnitBuyersUndertakingSource.next(pdf);
@@ -6614,7 +6733,7 @@ var PDFService = (function () {
     };
     PDFService.prototype.getPDFComputationSheet = function (id) {
         var _this = this;
-        var url = "http://filbrokerwebsite-greentech-api.azurewebsites.net/api/PDF/ComputationSheet/" + id;
+        var url = "https://filbrokerwebsite-greentech-api.azurewebsites.net/api/PDF/ComputationSheet/" + id;
         this.http.get(url, { responseType: __WEBPACK_IMPORTED_MODULE_1__angular_http__["e" /* ResponseContentType */].Blob }).subscribe(function (response) {
             var pdf = new Blob([response.blob()], { type: 'application/pdf' });
             _this.pdfComputationSheetSource.next(pdf);
@@ -7335,7 +7454,7 @@ var ProjectService = (function () {
     // project listing
     ProjectService.prototype.getProjects = function () {
         var _this = this;
-        var url = "http://filbrokerwebsite-greentech-api.azurewebsites.net/api/MstProject/List";
+        var url = "https://filbrokerwebsite-greentech-api.azurewebsites.net/api/MstProject/List";
         var projects = new __WEBPACK_IMPORTED_MODULE_4_wijmo_wijmo__["ObservableArray"]();
         this.http.get(url, this.options).subscribe(function (response) {
             var results = new __WEBPACK_IMPORTED_MODULE_4_wijmo_wijmo__["ObservableArray"](response.json());
@@ -7365,7 +7484,7 @@ var ProjectService = (function () {
     // project listing operations
     ProjectService.prototype.addProject = function (project, btnAddProject) {
         var _this = this;
-        var url = "http://filbrokerwebsite-greentech-api.azurewebsites.net/api/MstProject/Add";
+        var url = "https://filbrokerwebsite-greentech-api.azurewebsites.net/api/MstProject/Add";
         this.http.post(url, JSON.stringify(project), this.options).subscribe(function (response) {
             var id = response.json();
             if (id > 0) {
@@ -7387,7 +7506,7 @@ var ProjectService = (function () {
     };
     ProjectService.prototype.deleteProject = function (id) {
         var _this = this;
-        var url = "http://filbrokerwebsite-greentech-api.azurewebsites.net/api/MstProject/Delete/" + id;
+        var url = "https://filbrokerwebsite-greentech-api.azurewebsites.net/api/MstProject/Delete/" + id;
         this.http.delete(url, this.options).subscribe(function (response) {
             _this.projectDeletedSource.next(1);
         }, function (error) {
@@ -7398,7 +7517,7 @@ var ProjectService = (function () {
     ProjectService.prototype.getProject = function (id) {
         var _this = this;
         var project;
-        var url = "http://filbrokerwebsite-greentech-api.azurewebsites.net/api/MstProject/Detail/" + id;
+        var url = "https://filbrokerwebsite-greentech-api.azurewebsites.net/api/MstProject/Detail/" + id;
         this.http.get(url, this.options).subscribe(function (response) {
             var result = response.json();
             if (result != null) {
@@ -7428,7 +7547,7 @@ var ProjectService = (function () {
     // project detail operations
     ProjectService.prototype.saveProject = function (project) {
         var _this = this;
-        var url = "http://filbrokerwebsite-greentech-api.azurewebsites.net/api/MstProject/Save";
+        var url = "https://filbrokerwebsite-greentech-api.azurewebsites.net/api/MstProject/Save";
         this.http.put(url, JSON.stringify(project), this.options).subscribe(function (response) {
             _this.projectSavedSource.next(1);
         }, function (error) {
@@ -7437,7 +7556,7 @@ var ProjectService = (function () {
     };
     ProjectService.prototype.lockProject = function (project) {
         var _this = this;
-        var url = "http://filbrokerwebsite-greentech-api.azurewebsites.net/api/MstProject/Lock";
+        var url = "https://filbrokerwebsite-greentech-api.azurewebsites.net/api/MstProject/Lock";
         this.http.put(url, JSON.stringify(project), this.options).subscribe(function (response) {
             _this.projectLockedSource.next(1);
         }, function (error) {
@@ -7446,7 +7565,7 @@ var ProjectService = (function () {
     };
     ProjectService.prototype.unlockProject = function (project) {
         var _this = this;
-        var url = "http://filbrokerwebsite-greentech-api.azurewebsites.net/api/MstProject/Unlock";
+        var url = "https://filbrokerwebsite-greentech-api.azurewebsites.net/api/MstProject/Unlock";
         this.http.put(url, JSON.stringify(project), this.options).subscribe(function (response) {
             _this.projectUnlockedSource.next(1);
         }, function (error) {
@@ -7455,7 +7574,7 @@ var ProjectService = (function () {
     };
     ProjectService.prototype.uploadProjectLogo = function (file, fileName) {
         var _this = this;
-        var url = "http://filbrokerwebsite-greentech-api.azurewebsites.net/api/Blob/Upload";
+        var url = "https://filbrokerwebsite-greentech-api.azurewebsites.net/api/Blob/Upload";
         var blob;
         var formData = new FormData();
         formData.append("image", file, fileName);
@@ -7486,7 +7605,7 @@ var ProjectService = (function () {
     ProjectService.prototype.getDropDowns = function () {
         var _this = this;
         var dropDowns = new __WEBPACK_IMPORTED_MODULE_4_wijmo_wijmo__["ObservableArray"]();
-        var url = "http://filbrokerwebsite-greentech-api.azurewebsites.net/api/SysDropDown/List";
+        var url = "https://filbrokerwebsite-greentech-api.azurewebsites.net/api/SysDropDown/List";
         this.http.get(url, this.options).subscribe(function (response) {
             var results = new __WEBPACK_IMPORTED_MODULE_4_wijmo_wijmo__["ObservableArray"](response.json());
             if (results.length > 0) {
@@ -7508,7 +7627,7 @@ var ProjectService = (function () {
     // get house models per project
     ProjectService.prototype.getHouseModelsPerProject = function (id) {
         var _this = this;
-        var url = "http://filbrokerwebsite-greentech-api.azurewebsites.net/api/MstHouseModel/ListPerProjectId/" + id;
+        var url = "https://filbrokerwebsite-greentech-api.azurewebsites.net/api/MstHouseModel/ListPerProjectId/" + id;
         var houseModels = new __WEBPACK_IMPORTED_MODULE_4_wijmo_wijmo__["ObservableArray"]();
         this.http.get(url, this.options).subscribe(function (response) {
             var results = new __WEBPACK_IMPORTED_MODULE_4_wijmo_wijmo__["ObservableArray"](response.json());
@@ -7541,7 +7660,7 @@ var ProjectService = (function () {
     ProjectService.prototype.saveHouseModel = function (houseModel) {
         var _this = this;
         if (houseModel.id == 0) {
-            var url = "http://filbrokerwebsite-greentech-api.azurewebsites.net/api/MstHouseModel/Add";
+            var url = "https://filbrokerwebsite-greentech-api.azurewebsites.net/api/MstHouseModel/Add";
             this.http.post(url, JSON.stringify(houseModel), this.options).subscribe(function (response) {
                 _this.houseModelSavedSource.next(1);
             }, function (error) {
@@ -7549,7 +7668,7 @@ var ProjectService = (function () {
             });
         }
         else {
-            var url = "http://filbrokerwebsite-greentech-api.azurewebsites.net/api/MstHouseModel/Save";
+            var url = "https://filbrokerwebsite-greentech-api.azurewebsites.net/api/MstHouseModel/Save";
             this.http.put(url, JSON.stringify(houseModel), this.options).subscribe(function (response) {
                 _this.houseModelSavedSource.next(1);
             }, function (error) {
@@ -7559,7 +7678,7 @@ var ProjectService = (function () {
     };
     ProjectService.prototype.deleteHouseModel = function (id) {
         var _this = this;
-        var url = "http://filbrokerwebsite-greentech-api.azurewebsites.net/api/MstHouseModel/Delete/" + id;
+        var url = "https://filbrokerwebsite-greentech-api.azurewebsites.net/api/MstHouseModel/Delete/" + id;
         this.http.delete(url, this.options).subscribe(function (response) {
             _this.houseModelDeletedSource.next(1);
         }, function (error) {
@@ -7978,7 +8097,7 @@ var ReportsService = (function () {
     }
     ReportsService.prototype.getSoldUnitSummary = function (dateStart, dateEnd) {
         var _this = this;
-        var url = "http://filbrokerwebsite-greentech-api.azurewebsites.net/api/RepSummary/ListSoldUnitPerDates/" + dateStart + "/" + dateEnd;
+        var url = "https://filbrokerwebsite-greentech-api.azurewebsites.net/api/RepSummary/ListSoldUnitPerDates/" + dateStart + "/" + dateEnd;
         var soldUnits = new __WEBPACK_IMPORTED_MODULE_4_wijmo_wijmo__["ObservableArray"]();
         this.http.get(url, this.options).subscribe(function (response) {
             var results = new __WEBPACK_IMPORTED_MODULE_4_wijmo_wijmo__["ObservableArray"](response.json());
@@ -8043,7 +8162,7 @@ var ReportsService = (function () {
     };
     ReportsService.prototype.getCommissionRequestSummary = function (dateStart, dateEnd) {
         var _this = this;
-        var url = "http://filbrokerwebsite-greentech-api.azurewebsites.net/api/RepSummary/ListCommissionRequestPerDates/" + dateStart + "/" + dateEnd;
+        var url = "https://filbrokerwebsite-greentech-api.azurewebsites.net/api/RepSummary/ListCommissionRequestPerDates/" + dateStart + "/" + dateEnd;
         var commissionRequests = new __WEBPACK_IMPORTED_MODULE_4_wijmo_wijmo__["ObservableArray"]();
         this.http.get(url, this.options).subscribe(function (response) {
             var results = new __WEBPACK_IMPORTED_MODULE_4_wijmo_wijmo__["ObservableArray"](response.json());
@@ -8084,7 +8203,7 @@ var ReportsService = (function () {
     };
     ReportsService.prototype.getSoldUnitRequirementActivitySummary = function (dateStart, dateEnd) {
         var _this = this;
-        var url = "http://filbrokerwebsite-greentech-api.azurewebsites.net/api/RepSummary/ListSoldUnitRequirementActivityPerDates/" + dateStart + "/" + dateEnd;
+        var url = "https://filbrokerwebsite-greentech-api.azurewebsites.net/api/RepSummary/ListSoldUnitRequirementActivityPerDates/" + dateStart + "/" + dateEnd;
         var soldUnitRequirementActivities = new __WEBPACK_IMPORTED_MODULE_4_wijmo_wijmo__["ObservableArray"]();
         this.http.get(url, this.options).subscribe(function (response) {
             var results = new __WEBPACK_IMPORTED_MODULE_4_wijmo_wijmo__["ObservableArray"](response.json());
@@ -8115,7 +8234,7 @@ var ReportsService = (function () {
     };
     ReportsService.prototype.getSoldUnitChecklistSummary = function (dateStart, dateEnd) {
         var _this = this;
-        var url = "http://filbrokerwebsite-greentech-api.azurewebsites.net/api/RepSummary/ListSoldUnitChecklistPerDates/" + dateStart + "/" + dateEnd;
+        var url = "https://filbrokerwebsite-greentech-api.azurewebsites.net/api/RepSummary/ListSoldUnitChecklistPerDates/" + dateStart + "/" + dateEnd;
         var soldUnitChecklist = new __WEBPACK_IMPORTED_MODULE_4_wijmo_wijmo__["ObservableArray"]();
         this.http.get(url, this.options).subscribe(function (response) {
             var results = new __WEBPACK_IMPORTED_MODULE_4_wijmo_wijmo__["ObservableArray"](response.json());
@@ -8178,7 +8297,7 @@ var ReportsService = (function () {
     // Cutomer List
     ReportsService.prototype.getCustomerList = function (dateStart, dateEnd) {
         var _this = this;
-        var url = "http://filbrokerwebsite-greentech-api.azurewebsites.net/api/RepSummary/ListCustomerFilterByUpdateDateTime/" + dateStart + "/" + dateEnd;
+        var url = "https://filbrokerwebsite-greentech-api.azurewebsites.net/api/RepSummary/ListCustomerFilterByUpdateDateTime/" + dateStart + "/" + dateEnd;
         var customerListObservableArray = new __WEBPACK_IMPORTED_MODULE_4_wijmo_wijmo__["ObservableArray"]();
         this.http.get(url, this.options).subscribe(function (response) {
             var results = new __WEBPACK_IMPORTED_MODULE_4_wijmo_wijmo__["ObservableArray"](response.json());
@@ -8203,7 +8322,7 @@ var ReportsService = (function () {
     // Cutomer List
     ReportsService.prototype.getBrokerList = function (dateStart, dateEnd) {
         var _this = this;
-        var url = "http://filbrokerwebsite-greentech-api.azurewebsites.net/api/RepSummary/ListBrokerFilterByUpdateDateTime/" + dateStart + "/" + dateEnd;
+        var url = "https://filbrokerwebsite-greentech-api.azurewebsites.net/api/RepSummary/ListBrokerFilterByUpdateDateTime/" + dateStart + "/" + dateEnd;
         var brokerListObservableArray = new __WEBPACK_IMPORTED_MODULE_4_wijmo_wijmo__["ObservableArray"]();
         this.http.get(url, this.options).subscribe(function (response) {
             var results = new __WEBPACK_IMPORTED_MODULE_4_wijmo_wijmo__["ObservableArray"](response.json());
@@ -8699,7 +8818,7 @@ var SettingsService = (function () {
     SettingsService.prototype.getSettings = function () {
         var _this = this;
         var settings;
-        var url = "http://filbrokerwebsite-greentech-api.azurewebsites.net/api/SysSettings/Detail";
+        var url = "https://filbrokerwebsite-greentech-api.azurewebsites.net/api/SysSettings/Detail";
         this.http.get(url, this.options).subscribe(function (response) {
             var result = response.json();
             if (result != null) {
@@ -8735,7 +8854,7 @@ var SettingsService = (function () {
     // detail operations
     SettingsService.prototype.saveSettings = function (settings) {
         var _this = this;
-        var url = "http://filbrokerwebsite-greentech-api.azurewebsites.net/api/SysSettings/Save";
+        var url = "https://filbrokerwebsite-greentech-api.azurewebsites.net/api/SysSettings/Save";
         this.http.put(url, JSON.stringify(settings), this.options).subscribe(function (response) {
             _this.settingsSavedSource.next(1);
         }, function (error) {
@@ -8745,7 +8864,7 @@ var SettingsService = (function () {
     // detail combo boxes
     SettingsService.prototype.getUsers = function () {
         var _this = this;
-        var url = "http://filbrokerwebsite-greentech-api.azurewebsites.net/api/MstUser/List";
+        var url = "https://filbrokerwebsite-greentech-api.azurewebsites.net/api/MstUser/List";
         var users = new __WEBPACK_IMPORTED_MODULE_4_wijmo_wijmo__["ObservableArray"]();
         this.http.get(url, this.options).subscribe(function (response) {
             var results = new __WEBPACK_IMPORTED_MODULE_4_wijmo_wijmo__["ObservableArray"](response.json());
@@ -8770,7 +8889,7 @@ var SettingsService = (function () {
     // detail line1 (drop downs) list
     SettingsService.prototype.getDropDowns = function () {
         var _this = this;
-        var url = "http://filbrokerwebsite-greentech-api.azurewebsites.net/api/SysDropDown/List";
+        var url = "https://filbrokerwebsite-greentech-api.azurewebsites.net/api/SysDropDown/List";
         var dropDowns = new __WEBPACK_IMPORTED_MODULE_4_wijmo_wijmo__["ObservableArray"]();
         this.http.get(url, this.options).subscribe(function (response) {
             var results = new __WEBPACK_IMPORTED_MODULE_4_wijmo_wijmo__["ObservableArray"](response.json());
@@ -8793,7 +8912,7 @@ var SettingsService = (function () {
     // detail line1 (drop downs) list operations
     SettingsService.prototype.deleteDropDowns = function (id) {
         var _this = this;
-        var url = "http://filbrokerwebsite-greentech-api.azurewebsites.net/api/SysDropDown/Delete/" + id;
+        var url = "https://filbrokerwebsite-greentech-api.azurewebsites.net/api/SysDropDown/Delete/" + id;
         this.http.delete(url, this.options).subscribe(function (response) {
             _this.dropDownsDeletedSource.next(1);
         }, function (error) {
@@ -8803,7 +8922,7 @@ var SettingsService = (function () {
     SettingsService.prototype.saveDropDowns = function (dropDown) {
         var _this = this;
         if (dropDown.id == 0) {
-            var url = "http://filbrokerwebsite-greentech-api.azurewebsites.net/api/SysDropDown/Add";
+            var url = "https://filbrokerwebsite-greentech-api.azurewebsites.net/api/SysDropDown/Add";
             this.http.post(url, JSON.stringify(dropDown), this.options).subscribe(function (response) {
                 _this.dropDownsSavedSource.next(1);
             }, function (error) {
@@ -8811,7 +8930,7 @@ var SettingsService = (function () {
             });
         }
         else {
-            var url = "http://filbrokerwebsite-greentech-api.azurewebsites.net/api/SysDropDown/Save";
+            var url = "https://filbrokerwebsite-greentech-api.azurewebsites.net/api/SysDropDown/Save";
             this.http.put(url, JSON.stringify(dropDown), this.options).subscribe(function (response) {
                 _this.dropDownsSavedSource.next(1);
             }, function (error) {
@@ -10592,8 +10711,8 @@ var SoldUnitService = (function () {
     // list
     SoldUnitService.prototype.getSoldUnitsPerDates = function (dateStart, dateEnd) {
         var _this = this;
-        // let url = "http://filbrokerwebsite-greentech-api.azurewebsites.net/api/TrnSoldUnit/ListPerDates/" + dateStart + "/" + dateEnd;
-        var url = "http://filbrokerwebsite-greentech-api.azurewebsites.net/api/TrnSoldUnit/ListPerDates/" + dateStart + "/" + dateEnd;
+        // let url = "https://filbrokerwebsite-greentech-api.azurewebsites.net/api/TrnSoldUnit/ListPerDates/" + dateStart + "/" + dateEnd;
+        var url = "https://filbrokerwebsite-greentech-api.azurewebsites.net/api/TrnSoldUnit/ListPerDates/" + dateStart + "/" + dateEnd;
         var soldUnits = new __WEBPACK_IMPORTED_MODULE_4_wijmo_wijmo__["ObservableArray"]();
         this.http.get(url, this.options).subscribe(function (response) {
             var results = new __WEBPACK_IMPORTED_MODULE_4_wijmo_wijmo__["ObservableArray"](response.json());
@@ -10665,8 +10784,8 @@ var SoldUnitService = (function () {
     SoldUnitService.prototype.getSoldUnit = function (id) {
         var _this = this;
         var soldUnit;
-        // let url = "http://filbrokerwebsite-greentech-api.azurewebsites.net/api/TrnSoldUnit/Detail/" + id;
-        var url = "http://filbrokerwebsite-greentech-api.azurewebsites.net/api/TrnSoldUnit/Detail/" + id;
+        // let url = "https://filbrokerwebsite-greentech-api.azurewebsites.net/api/TrnSoldUnit/Detail/" + id;
+        var url = "https://filbrokerwebsite-greentech-api.azurewebsites.net/api/TrnSoldUnit/Detail/" + id;
         this.http.get(url, this.options).subscribe(function (response) {
             var result = response.json();
             if (result != null) {
@@ -10739,8 +10858,8 @@ var SoldUnitService = (function () {
     // detail line1 (checklist requirements) - new list and existing list
     SoldUnitService.prototype.getNewSoldUnitRequirements = function (soldUnitId, checklistId) {
         var _this = this;
-        // let url = "http://filbrokerwebsite-greentech-api.azurewebsites.net/api/TrnSoldUnitRequirement/ListNewTrnSoldUnitRequirements/" + soldUnitId + "/" + checklistId;
-        var url = "http://filbrokerwebsite-greentech-api.azurewebsites.net/api/TrnSoldUnitRequirement/ListNewTrnSoldUnitRequirements/" + soldUnitId + "/" + checklistId;
+        // let url = "https://filbrokerwebsite-greentech-api.azurewebsites.net/api/TrnSoldUnitRequirement/ListNewTrnSoldUnitRequirements/" + soldUnitId + "/" + checklistId;
+        var url = "https://filbrokerwebsite-greentech-api.azurewebsites.net/api/TrnSoldUnitRequirement/ListNewTrnSoldUnitRequirements/" + soldUnitId + "/" + checklistId;
         var soldUnitRequirements = new __WEBPACK_IMPORTED_MODULE_4_wijmo_wijmo__["ObservableArray"]();
         this.http.get(url, this.options).subscribe(function (response) {
             var results = new __WEBPACK_IMPORTED_MODULE_4_wijmo_wijmo__["ObservableArray"](response.json());
@@ -10775,8 +10894,8 @@ var SoldUnitService = (function () {
     };
     SoldUnitService.prototype.getSoldUnitRequirements = function (soldUnitId) {
         var _this = this;
-        // let url = "http://filbrokerwebsite-greentech-api.azurewebsites.net/api/TrnSoldUnitRequirement/ListPerUnitSold/" + soldUnitId;
-        var url = "http://filbrokerwebsite-greentech-api.azurewebsites.net/api/TrnSoldUnitRequirement/ListPerUnitSold/" + soldUnitId;
+        // let url = "https://filbrokerwebsite-greentech-api.azurewebsites.net/api/TrnSoldUnitRequirement/ListPerUnitSold/" + soldUnitId;
+        var url = "https://filbrokerwebsite-greentech-api.azurewebsites.net/api/TrnSoldUnitRequirement/ListPerUnitSold/" + soldUnitId;
         var soldUnitRequirements = new __WEBPACK_IMPORTED_MODULE_4_wijmo_wijmo__["ObservableArray"]();
         this.http.get(url, this.options).subscribe(function (response) {
             var results = new __WEBPACK_IMPORTED_MODULE_4_wijmo_wijmo__["ObservableArray"](response.json());
@@ -10812,8 +10931,8 @@ var SoldUnitService = (function () {
     // detail line1 line1 (checklist requirement activities)
     SoldUnitService.prototype.getSoldUnitRequirementActivities = function (soldUnitRequirementId) {
         var _this = this;
-        // let url = "http://filbrokerwebsite-greentech-api.azurewebsites.net/api/TrnSoldUnitRequirementActivity/ListPerSoldUnitRequirement/" + soldUnitRequirementId;
-        var url = "http://filbrokerwebsite-greentech-api.azurewebsites.net/api/TrnSoldUnitRequirementActivity/ListPerSoldUnitRequirement/" + soldUnitRequirementId;
+        // let url = "https://filbrokerwebsite-greentech-api.azurewebsites.net/api/TrnSoldUnitRequirementActivity/ListPerSoldUnitRequirement/" + soldUnitRequirementId;
+        var url = "https://filbrokerwebsite-greentech-api.azurewebsites.net/api/TrnSoldUnitRequirementActivity/ListPerSoldUnitRequirement/" + soldUnitRequirementId;
         var soldUnitRequirementActivities = new __WEBPACK_IMPORTED_MODULE_4_wijmo_wijmo__["ObservableArray"]();
         this.http.get(url, this.options).subscribe(function (response) {
             var results = new __WEBPACK_IMPORTED_MODULE_4_wijmo_wijmo__["ObservableArray"](response.json());
@@ -10840,8 +10959,8 @@ var SoldUnitService = (function () {
     // detail line2 (equity payment schedule)
     SoldUnitService.prototype.getNewSoldUnitEquitySchedule = function (soldUnitId) {
         var _this = this;
-        // let url = "http://filbrokerwebsite-greentech-api.azurewebsites.net/api/TrnSoldUnitEquitySchedule/ListNewTrnSoldUnitEquitySchedule/" + soldUnitId;
-        var url = "http://filbrokerwebsite-greentech-api.azurewebsites.net/api/TrnSoldUnitEquitySchedule/ListNewTrnSoldUnitEquitySchedule/" + soldUnitId;
+        // let url = "https://filbrokerwebsite-greentech-api.azurewebsites.net/api/TrnSoldUnitEquitySchedule/ListNewTrnSoldUnitEquitySchedule/" + soldUnitId;
+        var url = "https://filbrokerwebsite-greentech-api.azurewebsites.net/api/TrnSoldUnitEquitySchedule/ListNewTrnSoldUnitEquitySchedule/" + soldUnitId;
         var soldUnitEquitySchedule = new __WEBPACK_IMPORTED_MODULE_4_wijmo_wijmo__["ObservableArray"]();
         this.http.get(url, this.options).subscribe(function (response) {
             var results = new __WEBPACK_IMPORTED_MODULE_4_wijmo_wijmo__["ObservableArray"](response.json());
@@ -10868,8 +10987,8 @@ var SoldUnitService = (function () {
     };
     SoldUnitService.prototype.getSoldUnitEquitySchedule = function (soldUnitId) {
         var _this = this;
-        // let url = "http://filbrokerwebsite-greentech-api.azurewebsites.net/api/TrnSoldUnitEquitySchedule/ListPerUnitSold/" + soldUnitId;
-        var url = "http://filbrokerwebsite-greentech-api.azurewebsites.net/api/TrnSoldUnitEquitySchedule/ListPerUnitSold/" + soldUnitId;
+        // let url = "https://filbrokerwebsite-greentech-api.azurewebsites.net/api/TrnSoldUnitEquitySchedule/ListPerUnitSold/" + soldUnitId;
+        var url = "https://filbrokerwebsite-greentech-api.azurewebsites.net/api/TrnSoldUnitEquitySchedule/ListPerUnitSold/" + soldUnitId;
         var soldUnitEquitySchedule = new __WEBPACK_IMPORTED_MODULE_4_wijmo_wijmo__["ObservableArray"]();
         this.http.get(url, this.options).subscribe(function (response) {
             var results = new __WEBPACK_IMPORTED_MODULE_4_wijmo_wijmo__["ObservableArray"](response.json());
@@ -10897,8 +11016,8 @@ var SoldUnitService = (function () {
     // detail combo boxes
     SoldUnitService.prototype.getProjects = function () {
         var _this = this;
-        // let url = "http://filbrokerwebsite-greentech-api.azurewebsites.net/api/MstProject/List";
-        var url = "http://filbrokerwebsite-greentech-api.azurewebsites.net/api/MstProject/List";
+        // let url = "https://filbrokerwebsite-greentech-api.azurewebsites.net/api/MstProject/List";
+        var url = "https://filbrokerwebsite-greentech-api.azurewebsites.net/api/MstProject/List";
         var projects = new __WEBPACK_IMPORTED_MODULE_4_wijmo_wijmo__["ObservableArray"]();
         this.http.get(url, this.options).subscribe(function (response) {
             var results = new __WEBPACK_IMPORTED_MODULE_4_wijmo_wijmo__["ObservableArray"](response.json());
@@ -10927,8 +11046,8 @@ var SoldUnitService = (function () {
     SoldUnitService.prototype.getDropDowns = function () {
         var _this = this;
         var dropDowns = new __WEBPACK_IMPORTED_MODULE_4_wijmo_wijmo__["ObservableArray"]();
-        // let url = "http://filbrokerwebsite-greentech-api.azurewebsites.net/api/SysDropDown/List";
-        var url = "http://filbrokerwebsite-greentech-api.azurewebsites.net/api/SysDropDown/List";
+        // let url = "https://filbrokerwebsite-greentech-api.azurewebsites.net/api/SysDropDown/List";
+        var url = "https://filbrokerwebsite-greentech-api.azurewebsites.net/api/SysDropDown/List";
         this.http.get(url, this.options).subscribe(function (response) {
             var results = new __WEBPACK_IMPORTED_MODULE_4_wijmo_wijmo__["ObservableArray"](response.json());
             if (results.length > 0) {
@@ -10950,8 +11069,8 @@ var SoldUnitService = (function () {
     };
     SoldUnitService.prototype.getUnitsPerProject = function (projectId) {
         var _this = this;
-        // let url = "http://filbrokerwebsite-greentech-api.azurewebsites.net/api/MstUnit/OpenListPerProjectId/" + projectId;
-        var url = "http://filbrokerwebsite-greentech-api.azurewebsites.net/api/MstUnit/OpenListPerProjectId/" + projectId;
+        // let url = "https://filbrokerwebsite-greentech-api.azurewebsites.net/api/MstUnit/OpenListPerProjectId/" + projectId;
+        var url = "https://filbrokerwebsite-greentech-api.azurewebsites.net/api/MstUnit/OpenListPerProjectId/" + projectId;
         var units = new __WEBPACK_IMPORTED_MODULE_4_wijmo_wijmo__["ObservableArray"]();
         this.http.get(url, this.options).subscribe(function (response) {
             var results = new __WEBPACK_IMPORTED_MODULE_4_wijmo_wijmo__["ObservableArray"](response.json());
@@ -10989,8 +11108,8 @@ var SoldUnitService = (function () {
     };
     SoldUnitService.prototype.getChecklistsPerProject = function (projectId) {
         var _this = this;
-        // let url = "http://filbrokerwebsite-greentech-api.azurewebsites.net/api/MstChecklist/ListPerProjectId/" + projectId;
-        var url = "http://filbrokerwebsite-greentech-api.azurewebsites.net/api/MstChecklist/ListPerProjectId/" + projectId;
+        // let url = "https://filbrokerwebsite-greentech-api.azurewebsites.net/api/MstChecklist/ListPerProjectId/" + projectId;
+        var url = "https://filbrokerwebsite-greentech-api.azurewebsites.net/api/MstChecklist/ListPerProjectId/" + projectId;
         var checklists = new __WEBPACK_IMPORTED_MODULE_4_wijmo_wijmo__["ObservableArray"]();
         this.http.get(url, this.options).subscribe(function (response) {
             var results = new __WEBPACK_IMPORTED_MODULE_4_wijmo_wijmo__["ObservableArray"](response.json());
@@ -11021,8 +11140,8 @@ var SoldUnitService = (function () {
     };
     SoldUnitService.prototype.getCustomers = function () {
         var _this = this;
-        // let url = "http://filbrokerwebsite-greentech-api.azurewebsites.net/api/MstCustomer/List";
-        var url = "http://filbrokerwebsite-greentech-api.azurewebsites.net/api/MstCustomer/List";
+        // let url = "https://filbrokerwebsite-greentech-api.azurewebsites.net/api/MstCustomer/List";
+        var url = "https://filbrokerwebsite-greentech-api.azurewebsites.net/api/MstCustomer/List";
         var customers = new __WEBPACK_IMPORTED_MODULE_4_wijmo_wijmo__["ObservableArray"]();
         this.http.get(url, this.options).subscribe(function (response) {
             var results = new __WEBPACK_IMPORTED_MODULE_4_wijmo_wijmo__["ObservableArray"](response.json());
@@ -11042,8 +11161,8 @@ var SoldUnitService = (function () {
     };
     SoldUnitService.prototype.getBrokers = function () {
         var _this = this;
-        // let url = "http://filbrokerwebsite-greentech-api.azurewebsites.net/api/MstBroker/List";
-        var url = "http://filbrokerwebsite-greentech-api.azurewebsites.net/api/MstBroker/List";
+        // let url = "https://filbrokerwebsite-greentech-api.azurewebsites.net/api/MstBroker/List";
+        var url = "https://filbrokerwebsite-greentech-api.azurewebsites.net/api/MstBroker/List";
         var brokers = new __WEBPACK_IMPORTED_MODULE_4_wijmo_wijmo__["ObservableArray"]();
         this.http.get(url, this.options).subscribe(function (response) {
             var results = new __WEBPACK_IMPORTED_MODULE_4_wijmo_wijmo__["ObservableArray"](response.json());
@@ -11063,8 +11182,8 @@ var SoldUnitService = (function () {
     };
     SoldUnitService.prototype.getUsers = function () {
         var _this = this;
-        // let url = "http://filbrokerwebsite-greentech-api.azurewebsites.net/api/MstUser/List";
-        var url = "http://filbrokerwebsite-greentech-api.azurewebsites.net/api/MstUser/List";
+        // let url = "https://filbrokerwebsite-greentech-api.azurewebsites.net/api/MstUser/List";
+        var url = "https://filbrokerwebsite-greentech-api.azurewebsites.net/api/MstUser/List";
         var users = new __WEBPACK_IMPORTED_MODULE_4_wijmo_wijmo__["ObservableArray"]();
         this.http.get(url, this.options).subscribe(function (response) {
             var results = new __WEBPACK_IMPORTED_MODULE_4_wijmo_wijmo__["ObservableArray"](response.json());
@@ -11085,8 +11204,8 @@ var SoldUnitService = (function () {
     // upload attachments
     SoldUnitService.prototype.uploadSoldUnitAttachment = function (file, fileName) {
         var _this = this;
-        // let url = "http://filbrokerwebsite-greentech-api.azurewebsites.net/api/Blob/Upload";
-        var url = "http://filbrokerwebsite-greentech-api.azurewebsites.net/api/Blob/Upload";
+        // let url = "https://filbrokerwebsite-greentech-api.azurewebsites.net/api/Blob/Upload";
+        var url = "https://filbrokerwebsite-greentech-api.azurewebsites.net/api/Blob/Upload";
         var blob;
         var formData = new FormData();
         formData.append("image", file, fileName);
@@ -11116,8 +11235,8 @@ var SoldUnitService = (function () {
     // list operations
     SoldUnitService.prototype.addSoldUnit = function (soldUnit, btnAddSoldUnit) {
         var _this = this;
-        // let url = "http://filbrokerwebsite-greentech-api.azurewebsites.net/api/TrnSoldUnit/Add";
-        var url = "http://filbrokerwebsite-greentech-api.azurewebsites.net/api/TrnSoldUnit/Add";
+        // let url = "https://filbrokerwebsite-greentech-api.azurewebsites.net/api/TrnSoldUnit/Add";
+        var url = "https://filbrokerwebsite-greentech-api.azurewebsites.net/api/TrnSoldUnit/Add";
         this.http.post(url, JSON.stringify(soldUnit), this.options).subscribe(function (response) {
             var id = response.json();
             if (id > 0) {
@@ -11139,8 +11258,8 @@ var SoldUnitService = (function () {
     };
     SoldUnitService.prototype.deleteSoldUnit = function (id) {
         var _this = this;
-        // let url = "http://filbrokerwebsite-greentech-api.azurewebsites.net/api/TrnSoldUnit/Delete/" + id;
-        var url = "http://filbrokerwebsite-greentech-api.azurewebsites.net/api/TrnSoldUnit/Delete/" + id;
+        // let url = "https://filbrokerwebsite-greentech-api.azurewebsites.net/api/TrnSoldUnit/Delete/" + id;
+        var url = "https://filbrokerwebsite-greentech-api.azurewebsites.net/api/TrnSoldUnit/Delete/" + id;
         this.http.delete(url, this.options).subscribe(function (response) {
             _this.soldUnitDeletedSource.next(1);
         }, function (error) {
@@ -11149,8 +11268,8 @@ var SoldUnitService = (function () {
     };
     SoldUnitService.prototype.transferSoldUnit = function (soldUnit) {
         var _this = this;
-        // let url = "http://filbrokerwebsite-greentech-api.azurewebsites.net/api/TrnSoldUnit/Transfer";
-        var url = "http://filbrokerwebsite-greentech-api.azurewebsites.net/api/TrnSoldUnit/Transfer";
+        // let url = "https://filbrokerwebsite-greentech-api.azurewebsites.net/api/TrnSoldUnit/Transfer";
+        var url = "https://filbrokerwebsite-greentech-api.azurewebsites.net/api/TrnSoldUnit/Transfer";
         this.http.put(url, JSON.stringify(soldUnit), this.options).subscribe(function (response) {
             var id = response.json();
             if (id > 0) {
@@ -11172,8 +11291,8 @@ var SoldUnitService = (function () {
     // detail operations
     SoldUnitService.prototype.saveSoldUnit = function (soldUnit) {
         var _this = this;
-        // let url = "http://filbrokerwebsite-greentech-api.azurewebsites.net/api/TrnSoldUnit/Save";
-        var url = "http://filbrokerwebsite-greentech-api.azurewebsites.net/api/TrnSoldUnit/Save";
+        // let url = "https://filbrokerwebsite-greentech-api.azurewebsites.net/api/TrnSoldUnit/Save";
+        var url = "https://filbrokerwebsite-greentech-api.azurewebsites.net/api/TrnSoldUnit/Save";
         this.http.put(url, JSON.stringify(soldUnit), this.options).subscribe(function (response) {
             _this.soldUnitSavedSource.next(1);
         }, function (error) {
@@ -11182,8 +11301,8 @@ var SoldUnitService = (function () {
     };
     SoldUnitService.prototype.lockSoldUnit = function (soldUnit) {
         var _this = this;
-        // let url = "http://filbrokerwebsite-greentech-api.azurewebsites.net/api/TrnSoldUnit/Lock";
-        var url = "http://filbrokerwebsite-greentech-api.azurewebsites.net/api/TrnSoldUnit/Lock";
+        // let url = "https://filbrokerwebsite-greentech-api.azurewebsites.net/api/TrnSoldUnit/Lock";
+        var url = "https://filbrokerwebsite-greentech-api.azurewebsites.net/api/TrnSoldUnit/Lock";
         this.http.put(url, JSON.stringify(soldUnit), this.options).subscribe(function (response) {
             _this.soldUnitLockedSource.next(1);
         }, function (error) {
@@ -11192,8 +11311,8 @@ var SoldUnitService = (function () {
     };
     SoldUnitService.prototype.unlockSoldUnit = function (soldUnit) {
         var _this = this;
-        // let url = "http://filbrokerwebsite-greentech-api.azurewebsites.net/api/TrnSoldUnit/Unlock";
-        var url = "http://filbrokerwebsite-greentech-api.azurewebsites.net/api/TrnSoldUnit/Unlock";
+        // let url = "https://filbrokerwebsite-greentech-api.azurewebsites.net/api/TrnSoldUnit/Unlock";
+        var url = "https://filbrokerwebsite-greentech-api.azurewebsites.net/api/TrnSoldUnit/Unlock";
         this.http.put(url, JSON.stringify(soldUnit), this.options).subscribe(function (response) {
             _this.soldUnitUnlockedSource.next(1);
         }, function (error) {
@@ -11202,8 +11321,8 @@ var SoldUnitService = (function () {
     };
     SoldUnitService.prototype.cancelSoldUnit = function (soldUnit) {
         var _this = this;
-        // let url = "http://filbrokerwebsite-greentech-api.azurewebsites.net/api/TrnSoldUnit/Cancel";
-        var url = "http://filbrokerwebsite-greentech-api.azurewebsites.net/api/TrnSoldUnit/Cancel";
+        // let url = "https://filbrokerwebsite-greentech-api.azurewebsites.net/api/TrnSoldUnit/Cancel";
+        var url = "https://filbrokerwebsite-greentech-api.azurewebsites.net/api/TrnSoldUnit/Cancel";
         this.http.put(url, JSON.stringify(soldUnit), this.options).subscribe(function (response) {
             _this.soldUnitCancelSource.next(1);
         }, function (error) {
@@ -11213,8 +11332,8 @@ var SoldUnitService = (function () {
     // detail line1 (checklist requirements) operations
     SoldUnitService.prototype.saveSoldUnitRequirement = function (soldUnitRequirement) {
         var _this = this;
-        // let url = "http://filbrokerwebsite-greentech-api.azurewebsites.net/api/TrnSoldUnitRequirement/Save";
-        var url = "http://filbrokerwebsite-greentech-api.azurewebsites.net/api/TrnSoldUnitRequirement/Save";
+        // let url = "https://filbrokerwebsite-greentech-api.azurewebsites.net/api/TrnSoldUnitRequirement/Save";
+        var url = "https://filbrokerwebsite-greentech-api.azurewebsites.net/api/TrnSoldUnitRequirement/Save";
         this.http.put(url, JSON.stringify(soldUnitRequirement), this.options).subscribe(function (response) {
             _this.soldUnitRequirementSavedSource.next(1);
         }, function (error) {
@@ -11224,8 +11343,8 @@ var SoldUnitService = (function () {
     // detail line1 line (checklist requirement activities) operations
     SoldUnitService.prototype.saveSoldUnitRequirementActivity = function (soldUnitRequirementActivity) {
         var _this = this;
-        // let url = "http://filbrokerwebsite-greentech-api.azurewebsites.net/api/TrnSoldUnitRequirementActivity/Save";
-        var url = "http://filbrokerwebsite-greentech-api.azurewebsites.net/api/TrnSoldUnitRequirementActivity/Save";
+        // let url = "https://filbrokerwebsite-greentech-api.azurewebsites.net/api/TrnSoldUnitRequirementActivity/Save";
+        var url = "https://filbrokerwebsite-greentech-api.azurewebsites.net/api/TrnSoldUnitRequirementActivity/Save";
         this.http.put(url, JSON.stringify(soldUnitRequirementActivity), this.options).subscribe(function (response) {
             _this.soldUnitRequirementAcvititySavedSource.next(1);
         }, function (error) {
@@ -11234,8 +11353,8 @@ var SoldUnitService = (function () {
     };
     SoldUnitService.prototype.addSoldUnitRequirementActivity = function (soldUnitRequirementActivity) {
         var _this = this;
-        // let url = "http://filbrokerwebsite-greentech-api.azurewebsites.net/api/TrnSoldUnitRequirementActivity/Add";
-        var url = "http://filbrokerwebsite-greentech-api.azurewebsites.net/api/TrnSoldUnitRequirementActivity/Add";
+        // let url = "https://filbrokerwebsite-greentech-api.azurewebsites.net/api/TrnSoldUnitRequirementActivity/Add";
+        var url = "https://filbrokerwebsite-greentech-api.azurewebsites.net/api/TrnSoldUnitRequirementActivity/Add";
         this.http.post(url, JSON.stringify(soldUnitRequirementActivity), this.options).subscribe(function (response) {
             _this.soldUnitRequirementAcvitityAddSource.next(1);
         }, function (error) {
@@ -11244,8 +11363,8 @@ var SoldUnitService = (function () {
     };
     SoldUnitService.prototype.deleteSoldUnitRequirementActivity = function (id) {
         var _this = this;
-        // let url = "http://filbrokerwebsite-greentech-api.azurewebsites.net/api/TrnSoldUnitRequirementActivity/Delete/" + id;
-        var url = "http://filbrokerwebsite-greentech-api.azurewebsites.net/api/TrnSoldUnitRequirementActivity/Delete/" + id;
+        // let url = "https://filbrokerwebsite-greentech-api.azurewebsites.net/api/TrnSoldUnitRequirementActivity/Delete/" + id;
+        var url = "https://filbrokerwebsite-greentech-api.azurewebsites.net/api/TrnSoldUnitRequirementActivity/Delete/" + id;
         this.http.delete(url, this.options).subscribe(function (response) {
             _this.soldUnitRequirementAcvitityDeleteSource.next(1);
         }, function (error) {
@@ -11255,8 +11374,8 @@ var SoldUnitService = (function () {
     // detail line2 (equity payment schedule) operations
     SoldUnitService.prototype.saveSoldUnitEquitySchedule = function (soldUnitEquitySchedule) {
         var _this = this;
-        // let url = "http://filbrokerwebsite-greentech-api.azurewebsites.net/api/TrnSoldUnitEquitySchedule/Save";
-        var url = "http://filbrokerwebsite-greentech-api.azurewebsites.net/api/TrnSoldUnitEquitySchedule/Save";
+        // let url = "https://filbrokerwebsite-greentech-api.azurewebsites.net/api/TrnSoldUnitEquitySchedule/Save";
+        var url = "https://filbrokerwebsite-greentech-api.azurewebsites.net/api/TrnSoldUnitEquitySchedule/Save";
         this.http.put(url, JSON.stringify(soldUnitEquitySchedule), this.options).subscribe(function (response) {
             _this.soldUnitEquityPaymentSavedSource.next(1);
         }, function (error) {
@@ -11266,8 +11385,8 @@ var SoldUnitService = (function () {
     // List Co-Owner Customer
     SoldUnitService.prototype.getSoldUnitCustomer = function () {
         var _this = this;
-        // let url = "http://filbrokerwebsite-greentech-api.azurewebsites.net/api/trnSoldUnitOwner/dropdown/customer/list";
-        var url = "http://filbrokerwebsite-greentech-api.azurewebsites.net/api/trnSoldUnitOwner/dropdown/customer/list";
+        // let url = "https://filbrokerwebsite-greentech-api.azurewebsites.net/api/trnSoldUnitOwner/dropdown/customer/list";
+        var url = "https://filbrokerwebsite-greentech-api.azurewebsites.net/api/trnSoldUnitOwner/dropdown/customer/list";
         var customers = new __WEBPACK_IMPORTED_MODULE_4_wijmo_wijmo__["ObservableArray"]();
         this.http.get(url, this.options).subscribe(function (response) {
             var results = new __WEBPACK_IMPORTED_MODULE_4_wijmo_wijmo__["ObservableArray"](response.json());
@@ -11290,8 +11409,8 @@ var SoldUnitService = (function () {
     // List Co-Owner
     SoldUnitService.prototype.getSoldUnitCoOwner = function (soldUnitId) {
         var _this = this;
-        // let url = "http://filbrokerwebsite-greentech-api.azurewebsites.net/api/trnSoldUnitOwner/list/" + soldUnitId;
-        var url = "http://filbrokerwebsite-greentech-api.azurewebsites.net/api/trnSoldUnitOwner/list/" + soldUnitId;
+        // let url = "https://filbrokerwebsite-greentech-api.azurewebsites.net/api/trnSoldUnitOwner/list/" + soldUnitId;
+        var url = "https://filbrokerwebsite-greentech-api.azurewebsites.net/api/trnSoldUnitOwner/list/" + soldUnitId;
         var coOwners = new __WEBPACK_IMPORTED_MODULE_4_wijmo_wijmo__["ObservableArray"]();
         this.http.get(url, this.options).subscribe(function (response) {
             var results = new __WEBPACK_IMPORTED_MODULE_4_wijmo_wijmo__["ObservableArray"](response.json());
@@ -11317,8 +11436,8 @@ var SoldUnitService = (function () {
     // Add Co-Owner
     SoldUnitService.prototype.addSoldUnitCoOwner = function (objSoldUnitCoOwner) {
         var _this = this;
-        // let url = "http://filbrokerwebsite-greentech-api.azurewebsites.net/api/trnSoldUnitOwner/add";
-        var url = "http://filbrokerwebsite-greentech-api.azurewebsites.net/api/trnSoldUnitOwner/add";
+        // let url = "https://filbrokerwebsite-greentech-api.azurewebsites.net/api/trnSoldUnitOwner/add";
+        var url = "https://filbrokerwebsite-greentech-api.azurewebsites.net/api/trnSoldUnitOwner/add";
         this.http.post(url, JSON.stringify(objSoldUnitCoOwner), this.options).subscribe(function (response) {
             _this.addSoldUnitCoOwnerListSource.next(1);
         }, function (error) {
@@ -11328,8 +11447,8 @@ var SoldUnitService = (function () {
     // Update Co-Owner
     SoldUnitService.prototype.updateSoldUnitCoOwner = function (objSoldUnitCoOwner) {
         var _this = this;
-        // let url = "http://filbrokerwebsite-greentech-api.azurewebsites.net/api/trnSoldUnitOwner/update";
-        var url = "http://filbrokerwebsite-greentech-api.azurewebsites.net/api/trnSoldUnitOwner/update";
+        // let url = "https://filbrokerwebsite-greentech-api.azurewebsites.net/api/trnSoldUnitOwner/update";
+        var url = "https://filbrokerwebsite-greentech-api.azurewebsites.net/api/trnSoldUnitOwner/update";
         this.http.put(url, JSON.stringify(objSoldUnitCoOwner), this.options).subscribe(function (response) {
             _this.updateSoldUnitCoOwnerListSource.next(1);
         }, function (error) {
@@ -11339,8 +11458,8 @@ var SoldUnitService = (function () {
     // Delete Co-Owner
     SoldUnitService.prototype.deleteSoldUnitCoOwner = function (id) {
         var _this = this;
-        // let url = "http://filbrokerwebsite-greentech-api.azurewebsites.net/api/trnSoldUnitOwner/delete/" + id;
-        var url = "http://filbrokerwebsite-greentech-api.azurewebsites.net/api/trnSoldUnitOwner/delete/" + id;
+        // let url = "https://filbrokerwebsite-greentech-api.azurewebsites.net/api/trnSoldUnitOwner/delete/" + id;
+        var url = "https://filbrokerwebsite-greentech-api.azurewebsites.net/api/trnSoldUnitOwner/delete/" + id;
         this.http.delete(url, this.options).subscribe(function (response) {
             _this.deleteSoldUnitCoOwnerListSource.next(1);
         }, function (error) {
@@ -12275,8 +12394,8 @@ var UnitService = (function () {
     // list
     UnitService.prototype.getProjects = function () {
         var _this = this;
-        // let url = "http://filbrokerwebsite-greentech-api.azurewebsites.net/api/MstProject/List";
-        var url = "http://filbrokerwebsite-greentech-api.azurewebsites.net/api/MstProject/List";
+        // let url = "https://filbrokerwebsite-greentech-api.azurewebsites.net/api/MstProject/List";
+        var url = "https://filbrokerwebsite-greentech-api.azurewebsites.net/api/MstProject/List";
         var projects = new __WEBPACK_IMPORTED_MODULE_4_wijmo_wijmo__["ObservableArray"]();
         this.http.get(url, this.options).subscribe(function (response) {
             var results = new __WEBPACK_IMPORTED_MODULE_4_wijmo_wijmo__["ObservableArray"](response.json());
@@ -12304,8 +12423,8 @@ var UnitService = (function () {
     };
     UnitService.prototype.getUnitsPerProjectId = function (projectId) {
         var _this = this;
-        // let url = "http://filbrokerwebsite-greentech-api.azurewebsites.net/api/MstUnit/ListPerProjectId/" + projectId;
-        var url = "http://filbrokerwebsite-greentech-api.azurewebsites.net/api/MstUnit/ListPerProjectId/" + projectId;
+        // let url = "https://filbrokerwebsite-greentech-api.azurewebsites.net/api/MstUnit/ListPerProjectId/" + projectId;
+        var url = "https://filbrokerwebsite-greentech-api.azurewebsites.net/api/MstUnit/ListPerProjectId/" + projectId;
         var units = new __WEBPACK_IMPORTED_MODULE_4_wijmo_wijmo__["ObservableArray"]();
         this.http.get(url, this.options).subscribe(function (response) {
             var results = new __WEBPACK_IMPORTED_MODULE_4_wijmo_wijmo__["ObservableArray"](response.json());
@@ -12344,8 +12463,8 @@ var UnitService = (function () {
     UnitService.prototype.getHouseModelsPerProject = function (id) {
         var _this = this;
         var houseModels = new __WEBPACK_IMPORTED_MODULE_4_wijmo_wijmo__["ObservableArray"]();
-        // let url = "http://filbrokerwebsite-greentech-api.azurewebsites.net/api/MstHouseModel/ListPerProjectId/" + id;
-        var url = "http://filbrokerwebsite-greentech-api.azurewebsites.net/api/MstHouseModel/ListPerProjectId/" + id;
+        // let url = "https://filbrokerwebsite-greentech-api.azurewebsites.net/api/MstHouseModel/ListPerProjectId/" + id;
+        var url = "https://filbrokerwebsite-greentech-api.azurewebsites.net/api/MstHouseModel/ListPerProjectId/" + id;
         this.http.get(url, this.options).subscribe(function (response) {
             var results = new __WEBPACK_IMPORTED_MODULE_4_wijmo_wijmo__["ObservableArray"](response.json());
             if (results.length > 0) {
@@ -12375,8 +12494,8 @@ var UnitService = (function () {
     };
     UnitService.prototype.getUnitPricesPerUnitId = function (unitId) {
         var _this = this;
-        // let url = "http://filbrokerwebsite-greentech-api.azurewebsites.net/api/MstUnitPrice/ListPerUnitId/" + unitId;
-        var url = "http://filbrokerwebsite-greentech-api.azurewebsites.net/api/MstUnitPrice/ListPerUnitId/" + unitId;
+        // let url = "https://filbrokerwebsite-greentech-api.azurewebsites.net/api/MstUnitPrice/ListPerUnitId/" + unitId;
+        var url = "https://filbrokerwebsite-greentech-api.azurewebsites.net/api/MstUnitPrice/ListPerUnitId/" + unitId;
         var unitPrices = new __WEBPACK_IMPORTED_MODULE_4_wijmo_wijmo__["ObservableArray"]();
         this.http.get(url, this.options).subscribe(function (response) {
             var results = new __WEBPACK_IMPORTED_MODULE_4_wijmo_wijmo__["ObservableArray"](response.json());
@@ -12397,10 +12516,10 @@ var UnitService = (function () {
     };
     // list operations
     UnitService.prototype.addUnit = function (unit, btnAddUnit) {
-        // let url = "http://filbrokerwebsite-greentech-api.azurewebsites.net/api/MstUnit/Add";
+        // let url = "https://filbrokerwebsite-greentech-api.azurewebsites.net/api/MstUnit/Add";
         var _this = this;
         console.log(localStorage.getItem('access_token'));
-        var url = "http://filbrokerwebsite-greentech-api.azurewebsites.net/api/MstUnit/Add";
+        var url = "https://filbrokerwebsite-greentech-api.azurewebsites.net/api/MstUnit/Add";
         this.http.post(url, JSON.stringify(unit), this.options).subscribe(function (response) {
             var id = response.json();
             if (id > 0) {
@@ -12422,8 +12541,8 @@ var UnitService = (function () {
     };
     UnitService.prototype.deleteUnit = function (id) {
         var _this = this;
-        // let url = "http://filbrokerwebsite-greentech-api.azurewebsites.net/api/MstUnit/Delete/" + id;
-        var url = "http://filbrokerwebsite-greentech-api.azurewebsites.net/api/MstUnit/Delete/" + id;
+        // let url = "https://filbrokerwebsite-greentech-api.azurewebsites.net/api/MstUnit/Delete/" + id;
+        var url = "https://filbrokerwebsite-greentech-api.azurewebsites.net/api/MstUnit/Delete/" + id;
         this.http.delete(url, this.options).subscribe(function (response) {
             _this.unitDeletedSource.next(1);
         }, function (error) {
@@ -12434,8 +12553,8 @@ var UnitService = (function () {
     UnitService.prototype.getUnit = function (id) {
         var _this = this;
         var unit;
-        // let url = "http://filbrokerwebsite-greentech-api.azurewebsites.net/api/MstUnit/Detail/" + id;
-        var url = "http://filbrokerwebsite-greentech-api.azurewebsites.net/api/MstUnit/Detail/" + id;
+        // let url = "https://filbrokerwebsite-greentech-api.azurewebsites.net/api/MstUnit/Detail/" + id;
+        var url = "https://filbrokerwebsite-greentech-api.azurewebsites.net/api/MstUnit/Detail/" + id;
         this.http.get(url, this.options).subscribe(function (response) {
             var result = response.json();
             if (result != null) {
@@ -12474,8 +12593,8 @@ var UnitService = (function () {
     // detail operations
     UnitService.prototype.saveUnit = function (unit) {
         var _this = this;
-        // let url = "http://filbrokerwebsite-greentech-api.azurewebsites.net/api/MstUnit/Save";
-        var url = "http://filbrokerwebsite-greentech-api.azurewebsites.net/api/MstUnit/Save";
+        // let url = "https://filbrokerwebsite-greentech-api.azurewebsites.net/api/MstUnit/Save";
+        var url = "https://filbrokerwebsite-greentech-api.azurewebsites.net/api/MstUnit/Save";
         this.http.put(url, JSON.stringify(unit), this.options).subscribe(function (response) {
             _this.unitSavedSource.next(1);
         }, function (error) {
@@ -12484,8 +12603,8 @@ var UnitService = (function () {
     };
     UnitService.prototype.lockUnit = function (unit) {
         var _this = this;
-        // let url = "http://filbrokerwebsite-greentech-api.azurewebsites.net/api/MstUnit/Lock";
-        var url = "http://filbrokerwebsite-greentech-api.azurewebsites.net/api/MstUnit/Lock";
+        // let url = "https://filbrokerwebsite-greentech-api.azurewebsites.net/api/MstUnit/Lock";
+        var url = "https://filbrokerwebsite-greentech-api.azurewebsites.net/api/MstUnit/Lock";
         this.http.put(url, JSON.stringify(unit), this.options).subscribe(function (response) {
             _this.unitLockedSource.next(1);
         }, function (error) {
@@ -12494,8 +12613,8 @@ var UnitService = (function () {
     };
     UnitService.prototype.unlockUnit = function (unit) {
         var _this = this;
-        // let url = "http://filbrokerwebsite-greentech-api.azurewebsites.net/api/MstUnit/Unlock";
-        var url = "http://filbrokerwebsite-greentech-api.azurewebsites.net/api/MstUnit/Unlock";
+        // let url = "https://filbrokerwebsite-greentech-api.azurewebsites.net/api/MstUnit/Unlock";
+        var url = "https://filbrokerwebsite-greentech-api.azurewebsites.net/api/MstUnit/Unlock";
         this.http.put(url, JSON.stringify(unit), this.options).subscribe(function (response) {
             _this.unitUnlockedSource.next(1);
         }, function (error) {
@@ -12509,8 +12628,8 @@ var UnitService = (function () {
             unitCode: unitCode,
             price: price
         };
-        // let url = "http://filbrokerwebsite-greentech-api.azurewebsites.net/api/MstUnit/UpdatePrice";
-        var url = "http://filbrokerwebsite-greentech-api.azurewebsites.net/api/MstUnit/UpdatePrice";
+        // let url = "https://filbrokerwebsite-greentech-api.azurewebsites.net/api/MstUnit/UpdatePrice";
+        var url = "https://filbrokerwebsite-greentech-api.azurewebsites.net/api/MstUnit/UpdatePrice";
         this.http.put(url, JSON.stringify(unitPrice), this.options).subscribe(function (response) {
             _this.unitUpdatePriceSource.next(1);
         }, function (error) {
@@ -12522,7 +12641,7 @@ var UnitService = (function () {
         var _this = this;
         var dropDowns = new __WEBPACK_IMPORTED_MODULE_4_wijmo_wijmo__["ObservableArray"]();
         // let url = "http://filbrokerwebsite-priland.azurewebsites.net/api/SysDropDown/List";
-        var url = "http://filbrokerwebsite-greentech-api.azurewebsites.net/api/SysDropDown/List";
+        var url = "https://filbrokerwebsite-greentech-api.azurewebsites.net/api/SysDropDown/List";
         this.http.get(url, this.options).subscribe(function (response) {
             var results = new __WEBPACK_IMPORTED_MODULE_4_wijmo_wijmo__["ObservableArray"](response.json());
             if (results.length > 0) {
@@ -13177,8 +13296,8 @@ var UserService = (function () {
     // list
     UserService.prototype.getUsers = function () {
         var _this = this;
-        // let url = "http://filbrokerwebsite-greentech-api.azurewebsites.net/api/MstUser/List";
-        var url = "http://filbrokerwebsite-greentech-api.azurewebsites.net/api/MstUser/List";
+        // let url = "https://filbrokerwebsite-greentech-api.azurewebsites.net/api/MstUser/List";
+        var url = "https://filbrokerwebsite-greentech-api.azurewebsites.net/api/MstUser/List";
         var users = new __WEBPACK_IMPORTED_MODULE_4_wijmo_wijmo__["ObservableArray"]();
         this.http.get(url, this.options).subscribe(function (response) {
             var results = new __WEBPACK_IMPORTED_MODULE_4_wijmo_wijmo__["ObservableArray"](response.json());
@@ -13204,8 +13323,8 @@ var UserService = (function () {
     UserService.prototype.getUser = function (id) {
         var _this = this;
         var user;
-        // let url = "http://filbrokerwebsite-greentech-api.azurewebsites.net/api/MstUser/Detail/" + id;
-        var url = "http://filbrokerwebsite-greentech-api.azurewebsites.net/api/MstUser/Detail/" + id;
+        // let url = "https://filbrokerwebsite-greentech-api.azurewebsites.net/api/MstUser/Detail/" + id;
+        var url = "https://filbrokerwebsite-greentech-api.azurewebsites.net/api/MstUser/Detail/" + id;
         this.http.get(url, this.options).subscribe(function (response) {
             var results = response.json();
             if (results != null) {
@@ -13230,8 +13349,8 @@ var UserService = (function () {
     // detail operation(s)
     UserService.prototype.saveUser = function (user) {
         var _this = this;
-        // let url = "http://filbrokerwebsite-greentech-api.azurewebsites.net/api/MstUser/Save";
-        var url = "http://filbrokerwebsite-greentech-api.azurewebsites.net/api/MstUser/Save";
+        // let url = "https://filbrokerwebsite-greentech-api.azurewebsites.net/api/MstUser/Save";
+        var url = "https://filbrokerwebsite-greentech-api.azurewebsites.net/api/MstUser/Save";
         this.http.put(url, JSON.stringify(user), this.options).subscribe(function (response) {
             _this.userSavedSource.next(1);
         }, function (error) {
@@ -13242,8 +13361,8 @@ var UserService = (function () {
     UserService.prototype.getDropDowns = function () {
         var _this = this;
         var dropDowns = new __WEBPACK_IMPORTED_MODULE_4_wijmo_wijmo__["ObservableArray"]();
-        // let url = "http://filbrokerwebsite-greentech-api.azurewebsites.net/api/SysDropDown/List";
-        var url = "http://filbrokerwebsite-greentech-api.azurewebsites.net/api/SysDropDown/List";
+        // let url = "https://filbrokerwebsite-greentech-api.azurewebsites.net/api/SysDropDown/List";
+        var url = "https://filbrokerwebsite-greentech-api.azurewebsites.net/api/SysDropDown/List";
         this.http.get(url, this.options).subscribe(function (response) {
             var results = new __WEBPACK_IMPORTED_MODULE_4_wijmo_wijmo__["ObservableArray"](response.json());
             if (results.length > 0) {
@@ -13265,8 +13384,8 @@ var UserService = (function () {
     // detail line1 (user rights) list
     UserService.prototype.getUserRightsPerUser = function (id) {
         var _this = this;
-        // let url = "http://filbrokerwebsite-greentech-api.azurewebsites.net/api/MstUserRight/ListPerUser/" + id;
-        var url = "http://filbrokerwebsite-greentech-api.azurewebsites.net/api/MstUserRight/ListPerUser/" + id;
+        // let url = "https://filbrokerwebsite-greentech-api.azurewebsites.net/api/MstUserRight/ListPerUser/" + id;
+        var url = "https://filbrokerwebsite-greentech-api.azurewebsites.net/api/MstUserRight/ListPerUser/" + id;
         var userRights = new __WEBPACK_IMPORTED_MODULE_4_wijmo_wijmo__["ObservableArray"]();
         this.http.get(url, this.options).subscribe(function (response) {
             var results = new __WEBPACK_IMPORTED_MODULE_4_wijmo_wijmo__["ObservableArray"](response.json());
@@ -13296,8 +13415,8 @@ var UserService = (function () {
     UserService.prototype.saveUserRight = function (userRight) {
         var _this = this;
         if (userRight.id == 0) {
-            // let url = "http://filbrokerwebsite-greentech-api.azurewebsites.net/api/MstUserRight/Add";
-            var url = "http://filbrokerwebsite-greentech-api.azurewebsites.net/api/MstUserRight/Add";
+            // let url = "https://filbrokerwebsite-greentech-api.azurewebsites.net/api/MstUserRight/Add";
+            var url = "https://filbrokerwebsite-greentech-api.azurewebsites.net/api/MstUserRight/Add";
             this.http.post(url, JSON.stringify(userRight), this.options).subscribe(function (response) {
                 _this.userRightSavedSource.next(1);
             }, function (error) {
@@ -13305,8 +13424,8 @@ var UserService = (function () {
             });
         }
         else {
-            // let url = "http://filbrokerwebsite-greentech-api.azurewebsites.net/api/MstUserRight/Save";
-            var url = "http://filbrokerwebsite-greentech-api.azurewebsites.net/api/MstUserRight/Save";
+            // let url = "https://filbrokerwebsite-greentech-api.azurewebsites.net/api/MstUserRight/Save";
+            var url = "https://filbrokerwebsite-greentech-api.azurewebsites.net/api/MstUserRight/Save";
             this.http.put(url, JSON.stringify(userRight), this.options).subscribe(function (response) {
                 _this.userRightSavedSource.next(1);
             }, function (error) {
@@ -13316,8 +13435,8 @@ var UserService = (function () {
     };
     UserService.prototype.deleteUserRight = function (id) {
         var _this = this;
-        // let url = "http://filbrokerwebsite-greentech-api.azurewebsites.net/api/MstUserRight/Delete/" + id;
-        var url = "http://filbrokerwebsite-greentech-api.azurewebsites.net/api/MstUserRight/Delete/" + id;
+        // let url = "https://filbrokerwebsite-greentech-api.azurewebsites.net/api/MstUserRight/Delete/" + id;
+        var url = "https://filbrokerwebsite-greentech-api.azurewebsites.net/api/MstUserRight/Delete/" + id;
         this.http.delete(url, this.options).subscribe(function (response) {
             _this.userRightDeletedSource.next(1);
         }, function (error) {
@@ -13327,7 +13446,7 @@ var UserService = (function () {
     // detail line1 combo boxes
     UserService.prototype.getPages = function () {
         var _this = this;
-        // let url = "http://filbrokerwebsite-greentech-api.azurewebsites.net/api/SysPage/List";
+        // let url = "https://filbrokerwebsite-greentech-api.azurewebsites.net/api/SysPage/List";
         var url = "http://localhost:10136/api/SysPage/List";
         var pages = new __WEBPACK_IMPORTED_MODULE_4_wijmo_wijmo__["ObservableArray"]();
         this.http.get(url, this.options).subscribe(function (response) {
